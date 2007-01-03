@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory name="PostgresSessionFactory">
+		<property name="hibernate.connection.driver_class">
+			org.postgresql.Driver
+		</property>
+		<property name="hibernate.connection.password">jspart</property>
+		<property name="hibernate.connection.url">
+			jdbc:postgresql://localhost:5432/jspart
+		</property>
+		<property name="hibernate.connection.username">jspart</property>
+		<property name="hibernate.default_schema">public</property>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.PostgreSQLDialect
+		</property>
+		<mapping class="net.sigmalab.jspart.model.Artifact" />
+		<mapping class="net.sigmalab.jspart.model.Author" />
+		<mapping class="net.sigmalab.jspart.model.Comment" />
+		<mapping class="net.sigmalab.jspart.model.ContactInfo" />
+		<mapping class="net.sigmalab.jspart.model.ContactInfoType" />
+		<mapping class="net.sigmalab.jspart.model.ImageArtifact" />
+		<mapping class="net.sigmalab.jspart.model.ImageType" />
+		<mapping class="net.sigmalab.jspart.model.Licence" />
+		<mapping class="net.sigmalab.jspart.model.Role" />
+		<mapping class="net.sigmalab.jspart.model.SoundArtifact" />
+		<mapping class="net.sigmalab.jspart.model.SoundType" />
+		<mapping class="net.sigmalab.jspart.model.Tag" />
+	</session-factory>
+</hibernate-configuration>

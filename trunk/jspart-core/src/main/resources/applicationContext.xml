@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="jspart" />
+		<property name="jpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database" value="POSTGRESQL" />
+				<property name="generateDdl" value="false" />
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="jpaArtifactDAO"
+		class="net.sigmalab.jspart.dao.jpa.ArtifactDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="jpaArtistDAO"
+		class="net.sigmalab.jspart.dao.jpa.AuthorDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="jpaCommentDAO"
+		class="net.sigmalab.jspart.dao.jpa.CommentDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="jpaContactInfoDAO"
+		class="net.sigmalab.jspart.dao.jpa.ContactInfoDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="jpaImageArtifactDAO"
+		class="net.sigmalab.jspart.dao.jpa.ImageArtifactDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="jpaImageTypeDAO"
+		class="net.sigmalab.jspart.dao.jpa.ImageTypeDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="jpaLicenceDAO"
+		class="net.sigmalab.jspart.dao.jpa.LicenceDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	
+	
+	<bean id="jpaSoundArtifactDAO"
+		class="net.sigmalab.jspart.dao.jpa.SoundArtifactDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="jpaSoundTypeDAO"
+		class="net.sigmalab.jspart.dao.jpa.SoundTypeDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="jpaTagDAO"
+		class="net.sigmalab.jspart.dao.jpa.TagDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="jpaRoleDAO" class="net.sigmalab.jspart.dao.jpa.RoleDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+
+</beans>
