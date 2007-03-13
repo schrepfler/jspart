@@ -11,7 +11,7 @@ package net.sigmalab.jspart.dao.jpa;
 
 import net.sigmalab.jspart.dao.DaoFactory;
 import net.sigmalab.jspart.dao.IArtifactDAO;
-import net.sigmalab.jspart.dao.IArtistDAO;
+import net.sigmalab.jspart.dao.IAuthorDAO;
 import net.sigmalab.jspart.dao.ICommentDAO;
 import net.sigmalab.jspart.dao.IContactInfoDAO;
 import net.sigmalab.jspart.dao.IContactInfoTypeDAO;
@@ -45,8 +45,8 @@ public class JpaDAOFactory extends DaoFactory{
         return (IArtifactDAO) beanFactory.getBean("jpaArtifactDAO");
     }
     
-    public IArtistDAO getArtistDAO() {
-        return (IArtistDAO) beanFactory.getBean("jpaArtistDAO");
+    public IAuthorDAO getAuthorDAO() {
+        return (IAuthorDAO) beanFactory.getBean("jpaAuthorDAO");
     }
     
     public ICommentDAO getCommentDAO(){

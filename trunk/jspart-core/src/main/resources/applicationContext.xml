@@ -35,7 +35,7 @@
 			ref="entityManagerFactory" />
 	</bean>
 	
-	<bean id="jpaArtistDAO"
+	<bean id="jpaAuthorDAO"
 		class="net.sigmalab.jspart.dao.jpa.AuthorDAO">
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
@@ -86,6 +86,12 @@
 	
 	<bean id="jpaTagDAO"
 		class="net.sigmalab.jspart.dao.jpa.TagDAO">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="jpaTagTranslationDAO"
+		class="net.sigmalab.jspart.dao.jpa.TagTranslationDAO">
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
 	</bean>

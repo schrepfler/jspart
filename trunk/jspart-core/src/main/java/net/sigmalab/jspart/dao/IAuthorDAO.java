@@ -15,6 +15,6 @@ import net.sigmalab.jspart.model.Author;
  * 
  * @author Srgjan Srepfler
  */
-public interface IArtistDAO extends IDAO<Author, Long> {
+public interface IAuthorDAO extends IDAO<Author, Long> {
 
 }
