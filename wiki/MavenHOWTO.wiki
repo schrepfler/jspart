@@ -1,0 +1,21 @@
+#summary Maven HOWTO
+#labels Phase-Deploy
+
+= Introduction =
+
+The aim of this project it to be built with maven2. The good side to this is that we should cut down on the ant xml clutter but the downside is what some would say that maven has "a steep learning curve". I would argue that this is utter nonsense but hey, different strokes for different folks! Disclamer: maven2 has xml clutter of its own but it's easier.
+
+= Details =
+
+Maven is a tool that can be used for building and *managing* any Java-based project.
+
+First you need to install maven 2, to do so follow these [http://maven.apache.org/download.html#installation instructions] : 
+(Steps: Download, unzip, set the path to the binary folder, I usually add a M2_HOME variable and use that as the base for the path).
+
+Checkout the project from subversion
+{{{ svn checkout http://jspart.googlecode.com/svn/trunk/ jspart }}}
+
+Compile and install into local repository
+{{{ mvn clean install -Dmaven.test.skip=true }}}
+I'm encouraging to compile with skipping tests as the one there is fails.
+I'll soon add more maven tips here.
