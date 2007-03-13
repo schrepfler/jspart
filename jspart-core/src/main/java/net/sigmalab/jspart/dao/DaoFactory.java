@@ -9,6 +9,8 @@
 
 package net.sigmalab.jspart.dao;
 
+import net.sigmalab.jspart.dao.IAuthorDAO;
+
 /**
  *
  * @author Srepfler Srgjan
@@ -27,7 +29,7 @@ public abstract class DaoFactory{
         }
     }
 	
-    public abstract IArtistDAO getArtistDAO();
+    public abstract IAuthorDAO getAuthorDAO();
     
     public abstract IArtifactDAO getArtifactDAO();
     

@@ -28,5 +28,6 @@
 		<mapping class="net.sigmalab.jspart.model.SoundArtifact" />
 		<mapping class="net.sigmalab.jspart.model.SoundType" />
 		<mapping class="net.sigmalab.jspart.model.Tag" />
+                <mapping class="net.sigmalab.jspart.model.TagTranslation" />
 	</session-factory>
 </hibernate-configuration>

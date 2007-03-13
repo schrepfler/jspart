@@ -1,5 +1,6 @@
 package net.sigmalab.jspart.dao.jpa;
 
+import net.sigmalab.jspart.dao.IAuthorDAO;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -8,17 +9,16 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 import net.sigmalab.jspart.dao.DaoFactory;
-import net.sigmalab.jspart.dao.IArtistDAO;
 import net.sigmalab.jspart.model.Author;
 import net.sigmalab.jspart.model.Role;
 
 public class ArtistDAOTest {
 
-	private IArtistDAO artistDao;
+	private IAuthorDAO authorDao;
 
 	@BeforeMethod
 	public void setUp() throws Exception {		
-		artistDao = DaoFactory.getDAOFactory(JpaDAOFactory.class).getArtistDAO();
+		authorDao = DaoFactory.getDAOFactory(JpaDAOFactory.class).getAuthorDAO();
 	}
 
 	@AfterMethod
@@ -37,12 +37,11 @@ public class ArtistDAOTest {
 //	}
 
 	@Test
-	public void testMakePersistent() {
-		// Role role = roleDao.findById(new Long(530));
+	public void testCRUD() {
 		Role role = new Role();
 		role.setDescription("Superuser role").setName("ROLE_S");
 		assertNotNull(role);
-		int artistCount1 = artistDao.getAll().size();
+		int artistCount1 = authorDao.getAll().size();
 		Author author = new Author().setBirthDay(
 				GregorianCalendar.getInstance().getTime()).setCity("Tuzla")
 				.setCountry("YU").setEnabled(true).setName("Srgjan")
@@ -53,13 +52,24 @@ public class ArtistDAOTest {
 		author.getRoles().add(role);
 		author.setTimeZone(TimeZone.getDefault());
 
-		artistDao.save(author);
+		authorDao.save(author);
 
 		System.out.println(author.getId());
 		assertNotNull(author.getId());
-		int artistCount2 = artistDao.getAll().size();
+		int artistCount2 = authorDao.getAll().size();
 		assertEquals(artistCount1 + 1, artistCount2);
-
+                
+                author = authorDao.get(author.getId());
+                assertNotNull(author);
+                
+                author.setUsername("schrepfler");
+                authorDao.save(author);
+                
+                author = authorDao.get(author.getId());
+                assertEquals("schrepfler", author.getUsername());
+                
+                authorDao.remove(author.getId());
+                assertEquals(artistCount1,artistCount2-1);
 	}
 
 //	@Test
