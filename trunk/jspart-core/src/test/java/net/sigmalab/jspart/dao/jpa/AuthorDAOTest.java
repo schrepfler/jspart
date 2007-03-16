@@ -12,7 +12,7 @@ import net.sigmalab.jspart.dao.DaoFactory;
 import net.sigmalab.jspart.model.Author;
 import net.sigmalab.jspart.model.Role;
 
-public class ArtistDAOTest {
+public class AuthorDAOTest {
 
 	private IAuthorDAO authorDao;
 
@@ -26,12 +26,6 @@ public class ArtistDAOTest {
 	}
 
 //	@Test
-//	public void testFindById() {
-//		Author artist = artistDao.get(new Long(0));
-//		assertNotNull(artist);
-//	}
-
-//	@Test
 //	public void testFindAll() {
 //		fail("Not yet implemented"); // TODO
 //	}
@@ -41,7 +35,7 @@ public class ArtistDAOTest {
 		Role role = new Role();
 		role.setDescription("Superuser role").setName("ROLE_S");
 		assertNotNull(role);
-		int artistCount1 = authorDao.getAll().size();
+		int authorCount1 = authorDao.getAll().size();
 		Author author = new Author().setBirthDay(
 				GregorianCalendar.getInstance().getTime()).setCity("Tuzla")
 				.setCountry("YU").setEnabled(true).setName("Srgjan")
@@ -52,30 +46,25 @@ public class ArtistDAOTest {
 		author.getRoles().add(role);
 		author.setTimeZone(TimeZone.getDefault());
 
-		authorDao.save(author);
+		author = authorDao.save(author);
 
 		System.out.println(author.getId());
 		assertNotNull(author.getId());
-		int artistCount2 = authorDao.getAll().size();
-		assertEquals(artistCount1 + 1, artistCount2);
+		int authorCount2 = authorDao.getAll().size();
+		assertEquals(authorCount1 + 1, authorCount2 );
                 
                 author = authorDao.get(author.getId());
                 assertNotNull(author);
                 
                 author.setUsername("schrepfler");
-                authorDao.save(author);
+                author = authorDao.save(author);
                 
                 author = authorDao.get(author.getId());
                 assertEquals("schrepfler", author.getUsername());
                 
                 authorDao.remove(author.getId());
-                assertEquals(artistCount1,artistCount2-1);
+                assertEquals(authorCount1,authorCount2-1);
 	}
-
-//	@Test
-//	public void testRemoveArtist() {
-//		fail("Not yet implemented"); // TODO
-//	}
 
 //	@Test
 //	public void testFindByExample() {
