@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 import javax.persistence.Column;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 @SuppressWarnings("serial")
 @Entity
@@ -34,7 +34,7 @@ public class Author implements java.io.Serializable {
 
 	private String surname;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade=CascadeType.MERGE)
 	private List<Role> roles = new ArrayList<Role>();
 
 	@OneToMany(cascade=CascadeType.ALL)
@@ -202,5 +202,9 @@ public class Author implements java.io.Serializable {
 		this.username = username;
 		return this;
 	}
+        
+        public String toString(){
+            return ReflectionToStringBuilder.reflectionToString(this);
+        }
 
 }
