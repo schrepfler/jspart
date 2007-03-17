@@ -29,8 +29,7 @@ public class DAO<T, PK extends Serializable> extends JpaDaoSupport implements ID
     }
     
     public T save(T object) {
-        object = getJpaTemplate().merge(object);
-        return object;
+        return getJpaTemplate().merge(object);
     }
     
 }
