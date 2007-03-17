@@ -3,7 +3,6 @@ package net.sigmalab.jspart.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 @SuppressWarnings("serial")
 @Entity
@@ -149,4 +149,7 @@ public class Artifact implements java.io.Serializable {
 		return this;
 	}
 
+        public String toString(){
+            return ReflectionToStringBuilder.reflectionToString(this);
+        }
 }
