@@ -13,14 +13,17 @@ First you need to install maven 2, to do so follow these [http://maven.apache.or
 (Steps: Download, unzip, set the path to the binary folder, I usually add a M2_HOME variable and use that as the base for the path).
 
 Checkout the project from subversion
+
 {{{ svn checkout http://jspart.googlecode.com/svn/trunk/ jspart }}}
 
 For the moment we're using postgresql as database so you'll need that. You'll also need to create a user jspart with the password jspart, and make him owner of the database jspart.
 Then you can generate the tables by doing:
+
 {{{ mvn package hibernate3:hbm2ddl }}}
+
 You'll need to do package as the task needs to execute with the project compiled. If it already is compiled and the .class files are present you don't need to use package. I'll see if I can bind this to the process-classes life cycle.
 
 Compile and install into local repository
 {{{ mvn clean install }}}
-I'm encouraging to compile with skipping tests as the one there is fails.
+
 I'll soon add more maven tips here.
