@@ -8,47 +8,52 @@ These are tips, links and general stuff concerning maven that when I find on the
 
 = Details =
 
-Archetypes stuff:
+===Archetypes stuff:===
 [ Maven Archetypes for Web Applications by webtide ]
 http://www.webtide.com/resources.jsp
+
 [Struts2 archetype]
 http://struts.apache.org/2.x/docs/struts-maven-archetype.html
 http://svn.apache.org/repos/asf/struts/maven/trunk/struts2-archetype-blank/README.txt
 
+maven daily builds
 http://maven.zones.apache.org/~maven/builds/branches/
 
-mvn javadoc:javadoc [crea documentazione javadoc]
+{{{mvn javadoc:javadoc}}} [creates javadoc]
 javadoc:jar source:jar
 mvn -Dmaven.test.skip=true
-mvn -Dtest=ClassName test
 
-config for surefire plugin in order to attach a debugger
-<argLine>-Xrunjdwp:transport=dt_socket,server=y,address=5005</argLine>
-<forkMode>once</forkMode>
+{{{mvn -Dtest=ClassName test}}} [runs a specific test case]
+
+===config for surefire plugin in order to attach a debugger===
+{{{<argLine>-Xrunjdwp:transport=dt_socket,server=y,address=5005</argLine>
+<forkMode>once</forkMode>}}}
 even better:
--Dmaven.surefire.debug=true
+{{{mvn -Dmaven.surefire.debug=true}}]
 
 
-mvn package
+{{{mvn package}}}
+
 compiles, tests and packages your build
 
-mvn install:install-file -DgroupId=<group-id> -DartifactId=<artifact-id> -Dversion=<version> -Dpackaging=<packaging> -DgeneratePom=true -Dfile=<path-to-file> 
+{{{mvn install:install-file -DgroupId=<group-id> -DartifactId=<artifact-id> -Dversion=<version> -Dpackaging=<packaging> -DgeneratePom=true -Dfile=<path-to-file>}}}
 
 like ‘mvn package’, but also installs the artifacts in your local repo
 
-mvn deploy
+{{{mvn deploy}}}
+
 like ‘mvn install’, but also installs the artifacts in your company repo
 
-mvn eclipse:add-maven-repo -Declipse.workspace="c:/Documents and Settings/Srepfler Srgjan/workspace_jbosside"
-mvn eclipse:eclipse -DdownloadSources=true -Dwtpversion=1.0 
+{{{mvn eclipse:add-maven-repo -Declipse.workspace="c:/Documents and Settings/Srepfler Srgjan/workspace_jbosside"}}}
+{{{mvn eclipse:eclipse -DdownloadSources=true -Dwtpversion=1.0}}}
 (or 1.5 but you need to add the artifact's snapshots repository)
 
 
-mvn site
+{{{mvn site}}}
 generates a web-site with all kinds of optional reports. Not
  working optimally yet
 
-Lifecycle:
+===Lifecycle:===
 http://cvs.peopleware.be/training/maven/maven2/buildLifecyclePhases.html
 
 manifest and main class
