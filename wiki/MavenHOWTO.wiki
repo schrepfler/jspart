@@ -24,6 +24,7 @@ Then you can generate the tables by doing:
 You'll need to do package as the task needs to execute with the project compiled. If it already is compiled and the .class files are present you don't need to use package. I'll see if I can bind this to the process-classes life cycle.
 
 Compile and install into local repository
+
 {{{ mvn clean install }}}
 
 I'll soon add more maven tips here.
