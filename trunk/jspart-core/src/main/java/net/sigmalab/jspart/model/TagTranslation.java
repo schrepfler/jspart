@@ -34,6 +34,11 @@ public class TagTranslation implements Serializable {
     public void setTranslatedText(String translatedText) {
         this.translatedText = translatedText;
     }
+    
+    public TagTranslation translatedText(String translatedText) {
+        this.translatedText = translatedText;
+        return this;
+    }
 
     public String getTranslatedText() {
         return translatedText;
@@ -43,12 +48,22 @@ public class TagTranslation implements Serializable {
         this.language = language;
     }
 
+    public TagTranslation language(String language) {
+        this.language = language;
+        return this;
+    }
+
     public String getLanguage() {
         return language;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public TagTranslation id(Long id) {
+        this.id = id;
+        return this;
     }
 
     public Long getId() {

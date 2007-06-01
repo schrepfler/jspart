@@ -16,7 +16,11 @@ public class SoundArtifact extends Artifact implements java.io.Serializable {
 		return url;
 	}
 
-	public SoundArtifact setUrl(String url) {
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public SoundArtifact url(String url) {
 		this.url = url;
 		return this;
 	}
@@ -25,7 +29,11 @@ public class SoundArtifact extends Artifact implements java.io.Serializable {
 		return soundType;
 	}
 
-	public SoundArtifact setSoundType(SoundType soundType) {
+	public void setSoundType(SoundType soundType) {
+		this.soundType = soundType;
+	}
+
+	public SoundArtifact soundType(SoundType soundType) {
 		this.soundType = soundType;
 		return this;
 	}

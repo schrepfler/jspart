@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
@@ -59,12 +60,32 @@ public class Author implements java.io.Serializable {
 	private String state;
 
 	private String country;
+        
+        @OneToOne()
+        private ImageArtifact avatar;
 
+        public ImageArtifact getAvatar() {
+            return avatar;
+        }
+
+        public void setAvatar(ImageArtifact avatar) {
+            this.avatar = avatar;
+        }
+
+        public Author avatar(ImageArtifact avatar) {
+            this.avatar = avatar;
+            return this;
+        }
+        
 	public Date getBirthDay() {
 		return birthDay;
 	}
 
-	public Author setBirthDay(Date birthDay) {
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+        
+	public Author birthDay(Date birthDay) {
 		this.birthDay = birthDay;
 		return this;
 	}
@@ -73,16 +94,24 @@ public class Author implements java.io.Serializable {
 		return city;
 	}
 
-	public Author setCity(String city) {
+	public Author city(String city) {
 		this.city = city;
 		return this;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public List<ContactInfo> getContactInfo() {
 		return contactInfo;
 	}
 
-	public Author setContactInfo(List<ContactInfo> contactInfo) {
+	public void setContactInfo(List<ContactInfo> contactInfo) {
+		this.contactInfo = contactInfo;
+	}
+
+	public Author contactInfo(List<ContactInfo> contactInfo) {
 		this.contactInfo = contactInfo;
 		return this;
 	}
@@ -91,7 +120,11 @@ public class Author implements java.io.Serializable {
 		return country;
 	}
 
-	public Author setCountry(String country) {
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public Author country(String country) {
 		this.country = country;
 		return this;
 	}
@@ -100,7 +133,11 @@ public class Author implements java.io.Serializable {
 		return enabled;
 	}
 
-	public Author setEnabled(Boolean enabled) {
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public Author enabled(Boolean enabled) {
 		this.enabled = enabled;
 		return this;
 	}
@@ -112,12 +149,21 @@ public class Author implements java.io.Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+        
+        public Author id(Long id) {
+            this.id = id;
+            return this;
+	}
 
 	public String getName() {
 		return name;
 	}
 
-	public Author setName(String name) {
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Author name(String name) {
 		this.name = name;
 		return this;
 	}
@@ -126,7 +172,11 @@ public class Author implements java.io.Serializable {
 		return password;
 	}
 
-	public Author setPassword(String password) {
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Author password(String password) {
 		this.password = password;
 		return this;
 	}
@@ -135,7 +185,11 @@ public class Author implements java.io.Serializable {
 		return postalCode;
 	}
 
-	public Author setPostalCode(String postalCode) {
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public Author postalCode(String postalCode) {
 		this.postalCode = postalCode;
 		return this;
 	}
@@ -144,7 +198,11 @@ public class Author implements java.io.Serializable {
 		return roles;
 	}
 
-	public Author setRoles(List<Role> roles) {
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Author roles(List<Role> roles) {
 		this.roles = roles;
 		return this;
 	}
@@ -153,7 +211,11 @@ public class Author implements java.io.Serializable {
 		return state;
 	}
 
-	public Author setState(String state) {
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Author state(String state) {
 		this.state = state;
 		return this;
 	}
@@ -162,7 +224,11 @@ public class Author implements java.io.Serializable {
 		return streetName1;
 	}
 
-	public Author setStreetName1(String streetName1) {
+	public void setStreetName1(String streetName1) {
+		this.streetName1 = streetName1;
+	}
+
+	public Author streetName1(String streetName1) {
 		this.streetName1 = streetName1;
 		return this;
 	}
@@ -171,7 +237,11 @@ public class Author implements java.io.Serializable {
 		return streetName2;
 	}
 
-	public Author setStreetName2(String streetName2) {
+	public void setStreetName2(String streetName2) {
+		this.streetName2 = streetName2;
+	}
+
+	public Author streetName2(String streetName2) {
 		this.streetName2 = streetName2;
 		return this;
 	}
@@ -180,7 +250,11 @@ public class Author implements java.io.Serializable {
 		return surname;
 	}
 
-	public Author setSurname(String surname) {
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public Author surname(String surname) {
 		this.surname = surname;
 		return this;
 	}
@@ -189,7 +263,11 @@ public class Author implements java.io.Serializable {
 		return timeZone;
 	}
 
-	public Author setTimeZone(TimeZone timeZone) {
+	public void setTimeZone(TimeZone timeZone) {
+		this.timeZone = timeZone;
+	}
+
+	public Author timeZone(TimeZone timeZone) {
 		this.timeZone = timeZone;
 		return this;
 	}
@@ -198,9 +276,13 @@ public class Author implements java.io.Serializable {
 		return username;
 	}
 
-	public Author setUsername(String username) {
+	public void setUsername(String username) {
 		this.username = username;
-		return this;
+	}
+
+	public Author username(String username) {
+		this.username = username;
+                return this;
 	}
         
         public String toString(){

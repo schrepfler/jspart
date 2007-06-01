@@ -19,7 +19,11 @@ public class Licence implements java.io.Serializable {
 		return name;
 	}
 
-	public Licence setName(String name) {
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Licence name(String name) {
 		this.name = name;
 		return this;
 	}
@@ -28,7 +32,11 @@ public class Licence implements java.io.Serializable {
 		return url;
 	}
 
-	public Licence setUrl(String url) {
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Licence url(String url) {
 		this.url = url;
 		return this;
 	}
@@ -37,7 +45,11 @@ public class Licence implements java.io.Serializable {
 		return buttonImage;
 	}
 
-	public Licence setButtonImage(String buttonImage) {
+	public void setButtonImage(String buttonImage) {
+		this.buttonImage = buttonImage;
+	}
+
+	public Licence buttonImage(String buttonImage) {
 		this.buttonImage = buttonImage;
 		return this;
 	}
@@ -46,9 +58,13 @@ public class Licence implements java.io.Serializable {
 		return code;
 	}
 
-	public Licence setCode(String code) {
+	public Licence code(String code) {
 		this.code = code;
 		return this;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public Long getId() {
@@ -57,5 +73,10 @@ public class Licence implements java.io.Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Licence id(Long id) {
+		this.id = id;
+                return this;
 	}
 }

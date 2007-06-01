@@ -1,7 +1,7 @@
 package net.sigmalab.jspart.model;
 
-import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +31,11 @@ public class Tag implements java.io.Serializable {
     public void setTagTranslations(Set<TagTranslation> tagTranslations) {
         this.tagTranslations = tagTranslations;
     }
+
+    public Tag tagTranslations(Set<TagTranslation> tagTranslations) {
+        this.tagTranslations = tagTranslations;
+        return this;
+    }
     
     public Set<TagTranslation> getTagTranslations() {
         return tagTranslations;
@@ -40,9 +45,13 @@ public class Tag implements java.io.Serializable {
         return tagCount;
     }
     
-    public Tag setTagCount(Long tagCount) {
+    public Tag tagCount(Long tagCount) {
         this.tagCount = tagCount;
         return this;
+    }
+    
+    public void setTagCount(Long tagCount) {
+        this.tagCount = tagCount;
     }
     
     public Long getId() {
@@ -53,22 +62,35 @@ public class Tag implements java.io.Serializable {
         this.id = id;
     }
     
+    public Tag id(Long id) {
+        this.id = id;
+        return this;
+    }
+    
     public String getName() {
         return name;
     }
     
-    public Tag setName(String name) {
+    public Tag name(String name) {
         this.name = name;
         return this;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
     
     public String getType() {
         return type;
     }
     
-    public Tag setType(String type) {
+    public Tag type(String type) {
         this.type = type;
         return this;
+    }
+    
+    public void setType(String type) {
+        this.type = type;
     }
     
 }

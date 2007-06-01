@@ -19,9 +19,13 @@ public class ContactInfoType implements java.io.Serializable {
 		return name;
 	}
 
-	public ContactInfoType setName(String name) {
+	public ContactInfoType name(String name) {
 		this.name = name;
 		return this;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Long getId() {
@@ -30,5 +34,10 @@ public class ContactInfoType implements java.io.Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public ContactInfoType id(Long id) {
+		this.id = id;
+                return this;
 	}
 }

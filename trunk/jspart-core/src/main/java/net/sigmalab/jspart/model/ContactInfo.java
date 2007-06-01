@@ -24,16 +24,24 @@ public class ContactInfo implements java.io.Serializable {
 		return type;
 	}
 
-	public ContactInfo setType(ContactInfoType type) {
+	public ContactInfo type(ContactInfoType type) {
 		this.type = type;
 		return this;
+	}
+
+	public void setType(ContactInfoType type) {
+		this.type = type;
 	}
 
 	public String getUri() {
 		return uri;
 	}
 
-	public ContactInfo setUri(String uri) {
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
+
+	public ContactInfo uri(String uri) {
 		this.uri = uri;
 		return this;
 	}
@@ -44,5 +52,10 @@ public class ContactInfo implements java.io.Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public ContactInfo id(Long id) {
+		this.id = id;
+                return this;
 	}
 }
