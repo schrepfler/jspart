@@ -25,22 +25,35 @@ public class ImageType implements java.io.Serializable {
 		this.id = id;
 	}
 
+	public ImageType id(Long id) {
+		this.id = id;
+                return this;
+	}
+
 	public Boolean getIsPreviewable() {
 		return isPreviewable;
 	}
 
-	public ImageType setIsPreviewable(Boolean isPreviewable) {
+	public ImageType isPreviewable(Boolean isPreviewable) {
 		this.isPreviewable = isPreviewable;
 		return this;
+	}
+
+	public void setIsPreviewable(Boolean isPreviewable) {
+		this.isPreviewable = isPreviewable;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public ImageType setName(String name) {
+	public ImageType name(String name) {
 		this.name = name;
 		return this;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

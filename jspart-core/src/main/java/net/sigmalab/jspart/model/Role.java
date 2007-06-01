@@ -5,10 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.UniqueConstraint;
 
 @SuppressWarnings("serial")
-@Entity
+@Entity(name="Roles")
 public class Role implements java.io.Serializable {
 
 	@Id
@@ -24,14 +23,24 @@ public class Role implements java.io.Serializable {
 		return description;
 	}
 
-	public Role setDescription(String description) {
+	public Role description(String description) {
 		this.description = description;
 		return this;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Long getId() {
 		return id;
 	}
+
+	public Role id(Long id) {
+		this.id = id;
+                return this;
+	}
+
 
 	public void setId(Long id) {
 		this.id = id;
@@ -42,6 +51,11 @@ public class Role implements java.io.Serializable {
 	}
 
 	public Role setName(String name) {
+		this.name = name;
+		return this;
+	}
+
+	public Role name(String name) {
 		this.name = name;
 		return this;
 	}

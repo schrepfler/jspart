@@ -33,15 +33,15 @@ public class AuthorDAOTest {
 	@Test
 	public void testCRUD() {
 		Role role = new Role();
-		role.setDescription("Superuser role").setName("ROLE_S");
+		role.description("Superuser role").name("ROLE_S");
 		assertNotNull(role);
 		int authorCount1 = authorDao.getAll().size();
-		Author author = new Author().setBirthDay(
-				GregorianCalendar.getInstance().getTime()).setCity("Tuzla")
-				.setCountry("YU").setEnabled(true).setName("Srgjan")
-				.setPassword("testpassword").setPostalCode("123456").setState(
-						"BiH").setStreetName1("street 1").setStreetName2(
-						"street 2").setSurname("Srepfler").setUsername(
+		Author author = new Author().birthDay(
+				GregorianCalendar.getInstance().getTime()).city("Tuzla")
+				.country("YU").enabled(true).name("Srgjan")
+				.password("testpassword").postalCode("123456").state(
+						"BiH").streetName1("street 1").streetName2(
+						"street 2").surname("Srepfler").username(
 						"schrepfler2");
 		author.getRoles().add(role);
 		author.setTimeZone(TimeZone.getDefault());

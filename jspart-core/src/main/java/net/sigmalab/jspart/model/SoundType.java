@@ -21,18 +21,26 @@ public class SoundType implements java.io.Serializable {
 		return isPreviewable;
 	}
 
-	public SoundType setIsPreviewable(Boolean isPreviewable) {
+	public SoundType isPreviewable(Boolean isPreviewable) {
 		this.isPreviewable = isPreviewable;
 		return this;
+	}
+
+	public void setIsPreviewable(Boolean isPreviewable) {
+		this.isPreviewable = isPreviewable;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public SoundType setName(String name) {
+	public SoundType name(String name) {
 		this.name = name;
 		return this;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Long getId() {
@@ -41,6 +49,11 @@ public class SoundType implements java.io.Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public SoundType id(Long id) {
+		this.id = id;
+                return this;
 	}
 
 }
