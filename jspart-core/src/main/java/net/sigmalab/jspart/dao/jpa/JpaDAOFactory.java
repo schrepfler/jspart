@@ -22,6 +22,7 @@ import net.sigmalab.jspart.dao.IRoleDAO;
 import net.sigmalab.jspart.dao.ISoundArtifactDAO;
 import net.sigmalab.jspart.dao.ISoundTypeDAO;
 import net.sigmalab.jspart.dao.ITagDAO;
+import net.sigmalab.jspart.dao.ITagTranslationDAO;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -88,4 +89,8 @@ public class JpaDAOFactory extends DaoFactory{
     public ITagDAO geTagDAO(){
     	return (ITagDAO)beanFactory.getBean("jpaTagDAO");
     }
+
+	public ITagTranslationDAO getTagTranslationDAO() {
+		return (ITagTranslationDAO)beanFactory.getBean("jpaTagTranslationDAO");
+	}
 }

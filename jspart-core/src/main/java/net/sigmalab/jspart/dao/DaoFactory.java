@@ -32,7 +32,26 @@ public abstract class DaoFactory{
     public abstract IAuthorDAO getAuthorDAO();
     
     public abstract IArtifactDAO getArtifactDAO();
-    
+
     public abstract IRoleDAO getRoleDAO();
     
+    public abstract IContactInfoTypeDAO getContactInfoTypeDAO();
+    
+    public abstract IImageArtifactDAO getImageArtifactDAO();
+    
+    public abstract ILicenceDAO getLicenceDAO();
+    
+    public abstract ISoundTypeDAO getSoundTypeDAO();
+    
+    public abstract ISoundArtifactDAO getSoundArtifactDAO();
+    
+    public abstract ITagTranslationDAO getTagTranslationDAO();
+    
+    public abstract IImageTypeDAO getImageTypeDAO();
+    
+    public abstract ICommentDAO getCommentDAO();
+    
+    public abstract ITagDAO geTagDAO();
+    
+    public abstract IContactInfoDAO getContactInfoDAO();
 }
