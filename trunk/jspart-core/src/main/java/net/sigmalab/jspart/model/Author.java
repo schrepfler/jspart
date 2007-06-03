@@ -61,7 +61,7 @@ public class Author implements java.io.Serializable {
 
 	private String country;
         
-        @OneToOne()
+        @OneToOne(cascade=CascadeType.ALL)
         private ImageArtifact avatar;
 
         public ImageArtifact getAvatar() {
