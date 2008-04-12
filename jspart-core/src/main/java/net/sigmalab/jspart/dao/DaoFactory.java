@@ -41,13 +41,11 @@ public abstract class DaoFactory{
     
     public abstract ILicenceDAO getLicenceDAO();
     
-    public abstract ISoundTypeDAO getSoundTypeDAO();
+    public abstract IArtifactTypeDAO getArtifactTypeDAO();
     
     public abstract ISoundArtifactDAO getSoundArtifactDAO();
     
     public abstract ITagTranslationDAO getTagTranslationDAO();
-    
-    public abstract IImageTypeDAO getImageTypeDAO();
     
     public abstract ICommentDAO getCommentDAO();
     

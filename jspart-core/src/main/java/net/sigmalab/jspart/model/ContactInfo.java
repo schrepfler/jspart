@@ -10,52 +10,36 @@ import javax.persistence.ManyToOne;
 @Entity
 public class ContactInfo implements java.io.Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
-	
-	@ManyToOne
-	private ContactInfoType type;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
-	private String uri;
+    @ManyToOne
+    private ContactInfoType type;
 
-	
-	public ContactInfoType getType() {
-		return type;
-	}
+    private String uri;
 
-	public ContactInfo type(ContactInfoType type) {
-		this.type = type;
-		return this;
-	}
+    public ContactInfoType getType() {
+        return type;
+    }
 
-	public void setType(ContactInfoType type) {
-		this.type = type;
-	}
+    public void setType(ContactInfoType type) {
+        this.type = type;
+    }
 
-	public String getUri() {
-		return uri;
-	}
+    public String getUri() {
+        return uri;
+    }
 
-	public void setUri(String uri) {
-		this.uri = uri;
-	}
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
 
-	public ContactInfo uri(String uri) {
-		this.uri = uri;
-		return this;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public ContactInfo id(Long id) {
-		this.id = id;
-                return this;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

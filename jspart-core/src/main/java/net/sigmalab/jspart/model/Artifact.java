@@ -1,5 +1,6 @@
 package net.sigmalab.jspart.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,199 +18,166 @@ import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 @SuppressWarnings("serial")
 @Entity
-public class Artifact implements java.io.Serializable {
+public abstract class Artifact implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
-	
-	@Column(nullable = false)
-	private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
-	@OneToOne
-	private Author contributer;
+    @Column(nullable = false)
+    private String name;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private Comment description;
+    @OneToOne
+    private Author contributer;
 
-	@Temporal(value = TemporalType.DATE)
-	private Date insertDate;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Comment description;
 
-	@Temporal(value = TemporalType.DATE)
-	private Date editDate;
+    @Temporal(value = TemporalType.DATE)
+    private Date insertDate;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Comment> comments = new HashSet<Comment>();
+    @Temporal(value = TemporalType.DATE)
+    private Date editDate;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Tag> tags = new HashSet<Tag>();
+    private Boolean enabledComments = true;
 
-	private Boolean enabledComments = true;
+    private Boolean isDraft = false;
 
-	private Boolean isDraft = false;
-        
-        private Long length;
+    private long length;
+    
+    @OneToMany(cascade=CascadeType.ALL)
+    private Set<Tag> tags;
 
-        public Long getLength() {
-            return length;
-        }
+    public Set<Tag> getTags() {
+        return tags;
+    }
 
-        public void setLength(Long length) {
-            this.length = length;
-        }
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
 
-        public Artifact length(Long length) {
-            this.length = length;
-            return this;
-        }
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Licence> licences = new HashSet<Licence>();
-	
-	public Set<Licence> getLicences() {
-		return licences;
-	}
+    public long getLength() {
+        return length;
+    }
 
-	public Artifact licences(Set<Licence> licences) {
-		this.licences = licences;
-		return this;
-	}
+    public void setLength(long length) {
+        this.length = length;
+    }
 
-	public void setLicences(Set<Licence> licences) {
-		this.licences = licences;
-	}
+    public Author getContributer() {
+        return contributer;
+    }
 
-	public Set<Comment> getComments() {
-		return comments;
-	}
+    public void setContributer(Author contributer) {
+        this.contributer = contributer;
+    }
 
-	public void setComments(Set<Comment> comments) {
-		this.comments = comments;
-	}
+    public Comment getDescription() {
+        return description;
+    }
 
-	public Artifact comments(Set<Comment> comments) {
-		this.comments = comments;
-		return this;
-	}
+    public void setDescription(Comment description) {
+        this.description = description;
+    }
 
-	public Author getContributer() {
-		return contributer;
-	}
+    public Date getEditDate() {
+        return editDate;
+    }
 
-	public Artifact contributer(Author contributer) {
-		this.contributer = contributer;
-		return this;
-	}
+    public void setEditDate(Date editDate) {
+        this.editDate = editDate;
+    }
 
-	public void setContributer(Author contributer) {
-		this.contributer = contributer;
-	}
+    public Boolean getEnabledComments() {
+        return enabledComments;
+    }
 
-	public Comment getDescription() {
-		return description;
-	}
+    public void setEnabledComments(Boolean enabledComments) {
+        this.enabledComments = enabledComments;
+    }
 
-	public Artifact description(Comment description) {
-		this.description = description;
-		return this;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setDescription(Comment description) {
-		this.description = description;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Date getEditDate() {
-		return editDate;
-	}
+    public Date getInsertDate() {
+        return insertDate;
+    }
 
-	public Artifact editDate(Date editDate) {
-		this.editDate = editDate;
-		return this;
-	}
+    public void setInsertDate(Date insertDate) {
+        this.insertDate = insertDate;
+    }
 
-	public void setEditDate(Date editDate) {
-		this.editDate = editDate;
-	}
+    public Boolean getIsDraft() {
+        return isDraft;
+    }
 
-	public Boolean getEnabledComments() {
-		return enabledComments;
-	}
+    public void setIsDraft(Boolean isDraft) {
+        this.isDraft = isDraft;
+    }
 
-	public Artifact enabledComments(Boolean enabledComments) {
-		this.enabledComments = enabledComments;
-		return this;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setEnabledComments(Boolean enabledComments) {
-		this.enabledComments = enabledComments;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public String toString() {
+        return ReflectionToStringBuilder.reflectionToString(this);
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /**
+     * @uml.property name="uri"
+     */
+    private String uri = "";
 
-	public Artifact id(Long id) {
-		this.id = id;
-                return this;
-	}
+    /**
+     * Getter of the property <tt>uri</tt>
+     * 
+     * @return Returns the uri.
+     * @uml.property name="uri"
+     */
+    public String getUri() {
+        return uri;
+    }
 
-	public Date getInsertDate() {
-		return insertDate;
-	}
+    /**
+     * Setter of the property <tt>uri</tt>
+     * 
+     * @param uri
+     *            The uri to set.
+     * @uml.property name="uri"
+     */
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
 
-	public Artifact insertDate(Date insertDate) {
-		this.insertDate = insertDate;
-		return this;
-	}
+    private ArtifactType artifactType;
 
-	public void setInsertDate(Date insertDate) {
-		this.insertDate = insertDate;
-	}
+    public ArtifactType getArtifactType() {
+        return artifactType;
+    }
 
-	public Boolean getIsDraft() {
-		return isDraft;
-	}
+    public void setArtifactType(ArtifactType artifactType) {
+        this.artifactType = artifactType;
+    }
 
-	public Artifact isDraft(Boolean isDraft) {
-		this.isDraft = isDraft;
-		return this;
-	}
+    @OneToMany(cascade=CascadeType.ALL)
+    private Set<Comment> comments = new HashSet<Comment>();
 
-	public void setIsDraft(Boolean isDraft) {
-		this.isDraft = isDraft;
-	}
 
-	public String getName() {
-		return name;
-	}
+    public Set<Comment> getComments() {
+        return comments;
+    }
 
-	public Artifact name(String name) {
-		this.name = name;
-		return this;
-	}
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Set<Tag> getTags() {
-		return tags;
-	}
-
-	public Artifact tags(Set<Tag> tags) {
-		this.tags = tags;
-		return this;
-	}
-
-	public void setTags(Set<Tag> tags) {
-		this.tags = tags;
-	}
-
-        public String toString(){
-            return ReflectionToStringBuilder.reflectionToString(this);
-        }
 }

@@ -58,12 +58,6 @@
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
 	</bean>
-	
-	<bean id="jpaImageTypeDAO"
-		class="net.sigmalab.jspart.dao.jpa.ImageTypeDAO">
-		<property name="entityManagerFactory"
-			ref="entityManagerFactory" />
-	</bean>
 
 	<bean id="jpaLicenceDAO"
 		class="net.sigmalab.jspart.dao.jpa.LicenceDAO">
@@ -79,7 +73,7 @@
 	</bean>
 
 	<bean id="jpaSoundTypeDAO"
-		class="net.sigmalab.jspart.dao.jpa.SoundTypeDAO">
+		class="net.sigmalab.jspart.dao.jpa.ArtifactTypeDAO">
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
 	</bean>

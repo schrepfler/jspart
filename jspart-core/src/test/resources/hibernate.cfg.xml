@@ -22,12 +22,12 @@
 		<mapping class="net.sigmalab.jspart.model.ContactInfo" />
 		<mapping class="net.sigmalab.jspart.model.ContactInfoType" />
 		<mapping class="net.sigmalab.jspart.model.ImageArtifact" />
-		<mapping class="net.sigmalab.jspart.model.ImageType" />
+		<mapping class="net.sigmalab.jspart.model.ArtifactType" />
 		<mapping class="net.sigmalab.jspart.model.Licence" />
 		<mapping class="net.sigmalab.jspart.model.Role" />
 		<mapping class="net.sigmalab.jspart.model.SoundArtifact" />
-		<mapping class="net.sigmalab.jspart.model.SoundType" />
+		<mapping class="net.sigmalab.jspart.model.AuthorLocale" />
 		<mapping class="net.sigmalab.jspart.model.Tag" />
-                <mapping class="net.sigmalab.jspart.model.TagTranslation" />
+        <mapping class="net.sigmalab.jspart.model.TagTranslation" />
 	</session-factory>
 </hibernate-configuration>
