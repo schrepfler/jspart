@@ -1,8 +1,9 @@
 package net.sigmalab.jspart.model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.TimeZone;
 import javax.persistence.Column;
 import javax.persistence.CascadeType;
@@ -17,276 +18,247 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
+/**
+ * @uml.dependency supplier="net.sigmalab.jspart.model.ImageArtifact"
+ */
 @SuppressWarnings("serial")
 @Entity
-public class Author implements java.io.Serializable {
+public class Author implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	@Column(nullable = false, unique = true)
-	private String username;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	@Column(nullable = false)
-	private String password;
+    @Column(nullable = false, unique = true)
+    private String username;
 
-	private String name;
+    @Column(nullable = false)
+    private String password;
 
-	private String surname;
-	
-	@ManyToMany(cascade=CascadeType.MERGE)
-	private List<Role> roles = new ArrayList<Role>();
+    private String name;
 
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<ContactInfo> contactInfo = new ArrayList<ContactInfo>();
-	
-	@Column(nullable = false)
-	private Boolean enabled = false;
+    private String surname;
 
-	@Temporal(value = TemporalType.DATE)
-	private Date birthDay;
+    @Column(nullable = false)
+    private Boolean enabled = false;
 
-	private TimeZone timeZone;
+    @Temporal(value = TemporalType.DATE)
+    private Date birthDay;
 
-	private String streetName1;
+    private TimeZone timeZone;
 
-	private String streetName2;
+    private String streetName1;
 
-	private String city;
+    private String streetName2;
 
-	private String postalCode;
+    private String city;
 
-	private String state;
+    private String postalCode;
 
-	private String country;
-        
-        @OneToOne(cascade=CascadeType.ALL)
-        private ImageArtifact avatar;
+    private String state;
 
-        public ImageArtifact getAvatar() {
-            return avatar;
-        }
+    private String country;
 
-        public void setAvatar(ImageArtifact avatar) {
-            this.avatar = avatar;
-        }
+    @OneToOne(cascade = CascadeType.ALL)
+    private ImageArtifact avatar;
 
-        public Author avatar(ImageArtifact avatar) {
-            this.avatar = avatar;
-            return this;
-        }
-        
-	public Date getBirthDay() {
-		return birthDay;
-	}
+    public ImageArtifact getAvatar() {
+        return avatar;
+    }
 
-	public void setBirthDay(Date birthDay) {
-		this.birthDay = birthDay;
-	}
-        
-	public Author birthDay(Date birthDay) {
-		this.birthDay = birthDay;
-		return this;
-	}
+    public void setAvatar(ImageArtifact avatar) {
+        this.avatar = avatar;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public Date getBirthDay() {
+        return birthDay;
+    }
 
-	public Author city(String city) {
-		this.city = city;
-		return this;
-	}
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public List<ContactInfo> getContactInfo() {
-		return contactInfo;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public void setContactInfo(List<ContactInfo> contactInfo) {
-		this.contactInfo = contactInfo;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-	public Author contactInfo(List<ContactInfo> contactInfo) {
-		this.contactInfo = contactInfo;
-		return this;
-	}
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public Boolean getEnabled() {
+        return enabled;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
-	public Author country(String country) {
-		this.country = country;
-		return this;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Boolean getEnabled() {
-		return enabled;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Author enabled(Boolean enabled) {
-		this.enabled = enabled;
-		return this;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-        
-        public Author id(Long id) {
-            this.id = id;
-            return this;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getPostalCode() {
+        return postalCode;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
 
-	public Author name(String name) {
-		this.name = name;
-		return this;
-	}
+    public String getState() {
+        return state;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setState(String state) {
+        this.state = state;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getStreetName1() {
+        return streetName1;
+    }
 
-	public Author password(String password) {
-		this.password = password;
-		return this;
-	}
+    public void setStreetName1(String streetName1) {
+        this.streetName1 = streetName1;
+    }
 
-	public String getPostalCode() {
-		return postalCode;
-	}
+    public String getStreetName2() {
+        return streetName2;
+    }
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
+    public void setStreetName2(String streetName2) {
+        this.streetName2 = streetName2;
+    }
 
-	public Author postalCode(String postalCode) {
-		this.postalCode = postalCode;
-		return this;
-	}
+    public String getSurname() {
+        return surname;
+    }
 
-	public List<Role> getRoles() {
-		return roles;
-	}
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+    public TimeZone getTimeZone() {
+        return timeZone;
+    }
 
-	public Author roles(List<Role> roles) {
-		this.roles = roles;
-		return this;
-	}
+    public void setTimeZone(TimeZone timeZone) {
+        this.timeZone = timeZone;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public Author state(String state) {
-		this.state = state;
-		return this;
-	}
+    public String toString() {
+        return ReflectionToStringBuilder.reflectionToString(this);
+    }
 
-	public String getStreetName1() {
-		return streetName1;
-	}
+    /** 
+     * @uml.property name="authorLocales"
+     * @uml.associationEnd multiplicity="(0 -1)" aggregation="composite" inverse="author:net.sigmalab.jspart.model.AuthorLocale"
+     */
+    @OneToMany(cascade=CascadeType.ALL)
+    private Set<AuthorLocale> authorLocales;
 
-	public void setStreetName1(String streetName1) {
-		this.streetName1 = streetName1;
-	}
+    /** 
+     * @uml.property name="contactInfos"
+     * @uml.associationEnd multiplicity="(0 -1)" aggregation="composite" inverse="author:net.sigmalab.jspart.model.ContactInfo"
+     */
+    @OneToMany(cascade=CascadeType.ALL)
+    private Set<ContactInfo> contactInfos;
 
-	public Author streetName1(String streetName1) {
-		this.streetName1 = streetName1;
-		return this;
-	}
+    /** 
+     * @uml.property name="roles"
+     * @uml.associationEnd multiplicity="(0 -1)" aggregation="shared" inverse="author:net.sigmalab.jspart.model.Role"
+     */
+    @ManyToMany(cascade = CascadeType.MERGE)
+    private Set<Role> roles = new HashSet<Role>();
 
-	public String getStreetName2() {
-		return streetName2;
-	}
+    /**
+     * Getter of the property <tt>roles</tt>
+     * @return  Returns the role.
+     * @uml.property  name="roles"
+     */
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
-	public void setStreetName2(String streetName2) {
-		this.streetName2 = streetName2;
-	}
+    /**
+     * Setter of the property <tt>roles</tt>
+     * @param roles  The role to set.
+     * @uml.property  name="roles"
+     */
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
-	public Author streetName2(String streetName2) {
-		this.streetName2 = streetName2;
-		return this;
-	}
+    /**
+     * Getter of the property <tt>authorLocales</tt>
+     * @return  Returns the authorLocale.
+     * @uml.property  name="authorLocales"
+     */
+    public Set<AuthorLocale> getAuthorLocales() {
+        return authorLocales;
+    }
 
-	public String getSurname() {
-		return surname;
-	}
+    /**
+     * Setter of the property <tt>authorLocales</tt>
+     * @param authorLocales  The authorLocale to set.
+     * @uml.property  name="authorLocales"
+     */
+    public void setAuthorLocales(Set<AuthorLocale> authorLocales) {
+        this.authorLocales = authorLocales;
+    }
 
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
+    /**
+     * Getter of the property <tt>contactInfos</tt>
+     * @return  Returns the contactInfo.
+     * @uml.property  name="contactInfos"
+     */
+    public Set<ContactInfo> getContactInfos() {
+        return contactInfos;
+    }
 
-	public Author surname(String surname) {
-		this.surname = surname;
-		return this;
-	}
-
-	public TimeZone getTimeZone() {
-		return timeZone;
-	}
-
-	public void setTimeZone(TimeZone timeZone) {
-		this.timeZone = timeZone;
-	}
-
-	public Author timeZone(TimeZone timeZone) {
-		this.timeZone = timeZone;
-		return this;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public Author username(String username) {
-		this.username = username;
-                return this;
-	}
-        
-        public String toString(){
-            return ReflectionToStringBuilder.reflectionToString(this);
-        }
+    /**
+     * Setter of the property <tt>contactInfos</tt>
+     * @param contactInfos  The contactInfo to set.
+     * @uml.property  name="contactInfos"
+     */
+    public void setContactInfos(Set<ContactInfo> contactInfos) {
+        this.contactInfos = contactInfos;
+    }
 
 }

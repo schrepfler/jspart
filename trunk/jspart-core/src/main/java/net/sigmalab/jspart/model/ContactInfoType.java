@@ -9,35 +9,25 @@ import javax.persistence.Id;
 @Entity
 public class ContactInfoType implements java.io.Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
-	private String name;
+    private String name;
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public ContactInfoType name(String name) {
-		this.name = name;
-		return this;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public ContactInfoType id(Long id) {
-		this.id = id;
-                return this;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

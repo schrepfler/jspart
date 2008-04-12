@@ -1,41 +1,63 @@
 package net.sigmalab.jspart.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
 @Entity
-public class SoundArtifact extends Artifact implements java.io.Serializable {
+public class SoundArtifact extends Artifact implements Serializable {
 
-	private String url;
-	
-	@ManyToOne
-	private SoundType soundType;
+    /**
+     * @uml.property name="bitrate"
+     */
+    private int bitrate = 0;
 
-	public String getUrl() {
-		return url;
-	}
+    /**
+     * Getter of the property <tt>bitrate</tt>
+     * 
+     * @return Returns the bitrate.
+     * @uml.property name="bitrate"
+     */
+    public int getBitrate() {
+        return bitrate;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    /**
+     * Setter of the property <tt>bitrate</tt>
+     * 
+     * @param bitrate
+     *            The bitrate to set.
+     * @uml.property name="bitrate"
+     */
+    public void setBitrate(int bitrate) {
+        this.bitrate = bitrate;
+    }
 
-	public SoundArtifact url(String url) {
-		this.url = url;
-		return this;
-	}
+    /**
+     * @uml.property name="timeLength"
+     */
+    private int timeLength = 0;
 
-	public SoundType getSoundType() {
-		return soundType;
-	}
+    /**
+     * Getter of the property <tt>timeLength</tt>
+     * 
+     * @return Returns the timeLength.
+     * @uml.property name="timeLength"
+     */
+    public int getTimeLength() {
+        return timeLength;
+    }
 
-	public void setSoundType(SoundType soundType) {
-		this.soundType = soundType;
-	}
-
-	public SoundArtifact soundType(SoundType soundType) {
-		this.soundType = soundType;
-		return this;
-	}
+    /**
+     * Setter of the property <tt>timeLength</tt>
+     * 
+     * @param timeLength
+     *            The timeLength to set.
+     * @uml.property name="timeLength"
+     */
+    public void setTimeLength(int timeLength) {
+        this.timeLength = timeLength;
+    }
 
 }

@@ -10,6 +10,7 @@
 package net.sigmalab.jspart.dao.jpa;
 
 import net.sigmalab.jspart.dao.IAuthorDAO;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import net.sigmalab.jspart.model.Author;
@@ -19,7 +20,7 @@ import net.sigmalab.jspart.model.Author;
  * @author Srgjan Srepfler
  */
 @Transactional
-public class AuthorDAO extends DAO<Author, Long> implements IAuthorDAO {
+public class AuthorDAO extends DAO<Author, Long> implements IAuthorDAO{
 
 	public AuthorDAO() {
 		super(Author.class);

@@ -9,74 +9,49 @@ import javax.persistence.Id;
 @Entity
 public class Licence implements java.io.Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
-	private String name, url, code, buttonImage;
+    private String name, url, code, buttonImage;
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Licence name(String name) {
-		this.name = name;
-		return this;
-	}
+    public String getUrl() {
+        return url;
+    }
 
-	public String getUrl() {
-		return url;
-	}
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public String getButtonImage() {
+        return buttonImage;
+    }
 
-	public Licence url(String url) {
-		this.url = url;
-		return this;
-	}
+    public void setButtonImage(String buttonImage) {
+        this.buttonImage = buttonImage;
+    }
 
-	public String getButtonImage() {
-		return buttonImage;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setButtonImage(String buttonImage) {
-		this.buttonImage = buttonImage;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public Licence buttonImage(String buttonImage) {
-		this.buttonImage = buttonImage;
-		return this;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getCode() {
-		return code;
-	}
-
-	public Licence code(String code) {
-		this.code = code;
-		return this;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Licence id(Long id) {
-		this.id = id;
-                return this;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

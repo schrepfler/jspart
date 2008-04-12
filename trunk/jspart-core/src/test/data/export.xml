@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <table name="artifact">
+    <column>dtype</column>
+    <column>id</column>
+    <column>name</column>
+    <column>insertdate</column>
+    <column>editdate</column>
+    <column>enabledcomments</column>
+    <column>isdraft</column>
+    <column>length</column>
+    <column>uri</column>
+    <column>artifacttype</column>
+    <column>width</column>
+    <column>height</column>
+    <column>bitrate</column>
+    <column>timelength</column>
+    <column>text</column>
+    <column>contributer_id</column>
+    <column>description_id</column>
+  </table>
+  <table name="artifact_artifact">
+    <column>artifact_id</column>
+    <column>artifacts_id</column>
+  </table>
+  <table name="artifact_comment">
+    <column>artifact_id</column>
+    <column>comments_id</column>
+  </table>
+  <table name="artifact_tag">
+    <column>artifact_id</column>
+    <column>tags_id</column>
+  </table>
+  <table name="artifacttype">
+    <column>id</column>
+    <column>ispreviewable</column>
+    <column>mimetype</column>
+    <column>mimetypehandler</column>
+  </table>
+  <table name="author">
+    <column>id</column>
+    <column>username</column>
+    <column>password</column>
+    <column>name</column>
+    <column>surname</column>
+    <column>enabled</column>
+    <column>birthday</column>
+    <column>timezone</column>
+    <column>streetname1</column>
+    <column>streetname2</column>
+    <column>city</column>
+    <column>postalcode</column>
+    <column>state</column>
+    <column>country</column>
+    <column>avatar_id</column>
+  </table>
+  <table name="author_authorlocale">
+    <column>author_id</column>
+    <column>authorlocales_id</column>
+  </table>
+  <table name="author_contactinfo">
+    <column>author_id</column>
+    <column>contactinfos_id</column>
+  </table>
+  <table name="author_roles">
+    <column>author_id</column>
+    <column>roles_id</column>
+  </table>
+  <table name="authorlocale">
+    <column>id</column>
+    <column>language</column>
+    <column>country</column>
+    <column>variant</column>
+    <column>importance</column>
+  </table>
+  <table name="comment">
+    <column>id</column>
+    <column>text</column>
+    <column>insertdate</column>
+    <column>editdate</column>
+    <column>isenabled</column>
+    <column>isdraft</column>
+    <column>commenter_id</column>
+    <column>inreplytocomment_id</column>
+    <column>artifact_id</column>
+  </table>
+  <table name="contactinfo">
+    <column>id</column>
+    <column>uri</column>
+    <column>type_id</column>
+  </table>
+  <table name="contactinfotype">
+    <column>id</column>
+    <column>name</column>
+  </table>
+  <table name="licence">
+    <column>id</column>
+    <column>name</column>
+    <column>url</column>
+    <column>code</column>
+    <column>buttonimage</column>
+  </table>
+  <table name="roles">
+    <column>id</column>
+    <column>name</column>
+    <column>description</column>
+  </table>
+  <table name="tag">
+    <column>id</column>
+    <column>name</column>
+    <column>type</column>
+  </table>
+  <table name="tag_tagtranslation">
+    <column>tag_id</column>
+    <column>tagtranslations_id</column>
+  </table>
+  <table name="tagtranslation">
+    <column>id</column>
+    <column>language</column>
+    <column>translatedtext</column>
+  </table>
+</dataset>

@@ -4,13 +4,13 @@
 
     <class>net.sigmalab.jspart.model.ContactInfoType</class>
     <class>net.sigmalab.jspart.model.Author</class>
+    <class>net.sigmalab.jspart.model.AuthorLocale</class>
     <class>net.sigmalab.jspart.model.SoundArtifact</class>
     <class>net.sigmalab.jspart.model.ImageArtifact</class>
     <class>net.sigmalab.jspart.model.Comment</class>
-    <class>net.sigmalab.jspart.model.SoundType</class>
+    <class>net.sigmalab.jspart.model.ArtifactType</class>
     <class>net.sigmalab.jspart.model.Licence</class>
     <class>net.sigmalab.jspart.model.ContactInfo</class>
-    <class>net.sigmalab.jspart.model.ImageType</class>
     <class>net.sigmalab.jspart.model.Artifact</class>
     <class>net.sigmalab.jspart.model.Tag</class>
     <class>net.sigmalab.jspart.model.Role</class>

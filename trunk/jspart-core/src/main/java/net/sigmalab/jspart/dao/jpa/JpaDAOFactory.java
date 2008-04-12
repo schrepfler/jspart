@@ -11,16 +11,15 @@ package net.sigmalab.jspart.dao.jpa;
 
 import net.sigmalab.jspart.dao.DaoFactory;
 import net.sigmalab.jspart.dao.IArtifactDAO;
+import net.sigmalab.jspart.dao.IArtifactTypeDAO;
 import net.sigmalab.jspart.dao.IAuthorDAO;
 import net.sigmalab.jspart.dao.ICommentDAO;
 import net.sigmalab.jspart.dao.IContactInfoDAO;
 import net.sigmalab.jspart.dao.IContactInfoTypeDAO;
 import net.sigmalab.jspart.dao.IImageArtifactDAO;
-import net.sigmalab.jspart.dao.IImageTypeDAO;
 import net.sigmalab.jspart.dao.ILicenceDAO;
 import net.sigmalab.jspart.dao.IRoleDAO;
 import net.sigmalab.jspart.dao.ISoundArtifactDAO;
-import net.sigmalab.jspart.dao.ISoundTypeDAO;
 import net.sigmalab.jspart.dao.ITagDAO;
 import net.sigmalab.jspart.dao.ITagTranslationDAO;
 
@@ -32,7 +31,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  * @author Srepfler Srgjan
  */
-public class JpaDAOFactory extends DaoFactory{
+public class JpaDAOFactory extends DaoFactory {
     
     private ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
 				new String[] { "applicationContext.xml" });
@@ -66,8 +65,8 @@ public class JpaDAOFactory extends DaoFactory{
     	return (IImageArtifactDAO)beanFactory.getBean("jpaImageArtifactDAO");
     }
     
-    public IImageTypeDAO getImageTypeDAO(){
-    	return (IImageTypeDAO)beanFactory.getBean("jpaImageTypeDAO");
+    public IArtifactTypeDAO getArtifactTypeDAO(){
+    	return (IArtifactTypeDAO)beanFactory.getBean("jpaArtifactTypeDAO");
     }
     
     public ILicenceDAO getLicenceDAO(){
@@ -80,10 +79,6 @@ public class JpaDAOFactory extends DaoFactory{
     
     public ISoundArtifactDAO getSoundArtifactDAO(){
     	return (ISoundArtifactDAO)beanFactory.getBean("jpaSoundArtifactDAO");
-    }
-    
-    public ISoundTypeDAO getSoundTypeDAO(){
-    	return (ISoundTypeDAO)beanFactory.getBean("jpaSoundTypeDAO");
     }
     
     public ITagDAO geTagDAO(){

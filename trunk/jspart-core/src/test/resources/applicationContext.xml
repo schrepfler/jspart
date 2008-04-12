@@ -21,14 +21,7 @@
 		</property>
 	</bean>
 
-	<!-- ensure that the above transactional advice runs for any execution
-		of an operation defined by the FooService interface -->
-	<aop:config>
-		<aop:pointcut id="fooServiceOperation"
-			expression="execution(* net.sigmalab.jspart.dao.jpa.DAO.*(..))" />
-		<aop:advisor advice-ref="txAdvice"
-			pointcut-ref="fooServiceOperation" />
-	</aop:config>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.jpa.JpaTransactionManager">
@@ -36,24 +29,18 @@
 			ref="entityManagerFactory" />
 	</bean>
 
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="*" propagation="REQUIRED" />
-		</tx:attributes>
-	</tx:advice>
-
-        <bean id="jpaArtifactDAO"
+	<bean id="jpaArtifactDAO"
 		class="net.sigmalab.jspart.dao.jpa.ArtifactDAO">
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
 	</bean>
-
+	
 	<bean id="jpaAuthorDAO"
 		class="net.sigmalab.jspart.dao.jpa.AuthorDAO">
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
 	</bean>
-
+	
 	<bean id="jpaCommentDAO"
 		class="net.sigmalab.jspart.dao.jpa.CommentDAO">
 		<property name="entityManagerFactory"
@@ -68,12 +55,6 @@
 	
 	<bean id="jpaImageArtifactDAO"
 		class="net.sigmalab.jspart.dao.jpa.ImageArtifactDAO">
-		<property name="entityManagerFactory"
-			ref="entityManagerFactory" />
-	</bean>
-	
-	<bean id="jpaImageTypeDAO"
-		class="net.sigmalab.jspart.dao.jpa.ImageTypeDAO">
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
 	</bean>
@@ -92,7 +73,7 @@
 	</bean>
 
 	<bean id="jpaSoundTypeDAO"
-		class="net.sigmalab.jspart.dao.jpa.SoundTypeDAO">
+		class="net.sigmalab.jspart.dao.jpa.ArtifactTypeDAO">
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
 	</bean>
@@ -108,7 +89,7 @@
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
 	</bean>
-
+	
 	<bean id="jpaRoleDAO" class="net.sigmalab.jspart.dao.jpa.RoleDAO">
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
