@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC 
+	"-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+	
+<beans>
+    <import resource="classpath:applicationContext.xml"/>
+	<!-- Example of SAF2 action instantiated by Spring -->
+    <bean id="authorsAction" class="net.sigmalab.jspart.AuthorsAction" singleton="false" />
+    <bean id="artifactsAction" class="net.sigmalab.jspart.ArtifactsAction" singleton="false" />
+</beans>
+
