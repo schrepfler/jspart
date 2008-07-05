@@ -1,0 +1,252 @@
+body {
+	background-color: Maroon;
+}
+.logocell {
+	border-left: 1px solid #F76B63;
+	border-top: 1px solid #F76B63;
+	background: #B00000 url(../images/logo_bkg.jpg) repeat-x top;
+        padding-left:4px;
+        text-align:left;
+}
+.logobar {
+	background: #B00000 url(../images/logo_bkg.jpg) repeat-x top; text-align: right;
+	padding-right: 10px; font: x-small Arial, Helvetica, sans-serif;
+	color: White;
+	border-right: 1px solid #F76B63;
+	border-top: 1px solid #F76B63;
+	vertical-align: top;
+	padding-top: 5px;
+	}
+.logobar a{
+	color: White;
+}
+.logobar a:hover{
+	text-decoration: none;
+}
+
+.logobar input.button{
+	height: 20px; font: 10px;
+}
+
+.menubar {
+	background-color: #B00000;
+	border-top: 1px dashed #B00000;
+	border-bottom: 1px solid #970000;
+	padding: 4px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #F79E83;
+	border-right: 1px solid #F76B63;
+	border-left: 1px solid #F76B63;
+}
+
+.menubar a{
+	color: #F79E83;
+}
+
+.menubar a:hover{
+	text-decoration: none;
+}
+
+a.logout{
+	background: #FFFFEF;
+	font-size: 4mm;
+	border: 1px solid Black;
+	-moz-border-radius: 7px;
+	text-decoration: none;
+	color: Black;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+a.logout:hover{
+	background: #6A0000;
+	color: White;
+}
+
+.contentcell {
+	background-color: #B00000;
+	padding: 0px;
+	border-right: 1px solid #F76B63;
+	border-bottom: 1px solid #F76B63;
+	background: #B00000 url(../images/logo_bkg_rotated.jpg) repeat-x bottom;
+}
+
+.content {
+	background-color: #FFFFEF;
+	padding: 5px;
+	border: 1px solid #333333;
+	margin: 10px 10px 10px 0px;
+	-moz-border-radius: 7px;
+}
+
+.content a{
+	color: #6A0000;
+}
+.content a:hover{
+	text-decoration: none;
+}
+
+.content div.contentbox1{
+	background-color: #EEEEDD;
+	border: 1px solid #333333;
+	padding: 0px;
+	margin-bottom: 15px;
+}
+.contentbox1 div.title{
+	background-color: #DDDDCC;
+	border-bottom: 1px solid #333333;
+	color: #333333;
+	padding: 5px;
+	}
+	
+.contentbox1 div.title span.title{
+	font: bolder larger Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.contentbox1 div.title span.subtitle{
+	color: #808080;
+	font: x-small Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.contentbox1 div.postbody{
+	font-size: small;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	margin: 4px;
+	padding: 5px 0px 5px 0px;
+	}
+.postboxcell{
+	}
+.contentbox1 div.posttext{
+	padding: 10px;
+}
+.contentbox1 div.postpostscript{
+	font-style: italic;
+	font-size: 14px;
+	color: #666666;
+	border-top: 1px solid #333333;
+	padding: 5px;
+}
+
+.category{
+	 
+}
+.toolbar {
+	border-bottom: 1px solid #F76B63;
+	border-left: 1px solid #F76B63;
+	width: 200px;
+	background: #B00000 url(../images/logo_bkg_rotated.jpg) repeat-x bottom;
+	font: 15px "MS Sans Serif", Geneva, sans-serif;
+}
+
+.toolbar div.bar1{
+	background-color: #FFFFEF;
+	border: 1px solid #333333;
+	margin: 10px;
+	padding: 3px 3px 3px 3px;
+	text-align: right;
+}
+
+.toolbar div.bar2{
+	background-color: #FFFFEF;
+	border: 1px solid #333333;
+	margin: 10px;
+	padding: 3px 3px 3px 3px;
+	text-align: left;
+	background-image: url(../images/bar2_bkg.jpg);
+	background-position: right;
+	background-repeat: repeat-y;
+}
+
+.toolbar div.loginbox{
+	background-color: #FFFFEF;
+	border: 1px solid #333333;
+	margin: 10px;
+	padding: 3px 3px 3px 3px;
+	text-align: right;
+	background-image: url(../images/loginbox_bkg.jpg);
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+
+.toolbar span.title{
+	font-weight: bold; color: White;
+	display: block;
+	background-color: #CC0001;
+	padding: 3px;
+	border: 1px solid #6A0000;
+	margin-bottom: 5px;
+	-moz-border-radius: 7px;
+}
+
+span.title a{
+	display: inline;
+}
+span.title a:hover{
+	/*background-color: #CC0001;*/
+}
+.toolbar ul{
+	margin: 1px 1px 1px 20px;
+}
+.toolbar form{
+	margin: 0px;
+}
+
+.toolbar a{
+	color: #6A0000;
+	text-decoration: none;
+	}
+.toolbar a:hover{
+	text-decoration: underline;
+	}
+.toolbar input.textfield{
+	border: 1px solid Black; height: 20px; width: 115px;
+	background-image: url(../images/textfieldshadow.jpg);
+	margin-bottom: 1px;
+	margin-top: 1px;
+	padding-left: 8px;
+	padding-right: 8px;
+	}
+.toolbar input.button{
+	height: 20px; font: 10px;
+}
+
+.shortcut{
+	text-decoration: underline;
+}
+
+.tablerow1{
+	background-color: #DDDDCC;
+}
+.tablerow2{
+	background-color: #FFFFEF;
+}
+.copyright{
+	color: #FF7B7B;
+	text-align: center;
+}
+
+.cattree{
+	width: auto;
+}
+.tree_alt1{
+	background-color: #DDDDCC;
+	padding: 3px;
+	margin: 3px;
+	display: inline-block;
+	margin-left: 20px;
+	border-bottom: 1px solid #666666;
+	border-left: 1px solid #666666;
+	border-top: 1px solid #999999;
+	border-right: 1px solid #999999;
+}
+.tree_alt2{
+	background-color: #FFFFEF;
+	padding: 3px;
+	margin: 3px;
+	display: inline-block;
+	margin-left: 20px;
+	border-bottom: 1px solid #666666;
+	border-left: 1px solid #666666;
+	border-top: 1px solid #999999;
+	border-right: 1px solid #999999;
+}
