@@ -38,10 +38,10 @@
                 </exclusion>
             </exclusions>
         </dependency>-->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-tools</artifactId>
-			<version>3.2.0.beta9a</version>
+			<version>3.2.0.ga</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>hibernate</artifactId>
@@ -49,13 +49,14 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.acegisecurity</groupId>
-			<artifactId>acegi-security</artifactId>
+           <groupId>org.springframework.security</groupId>
+           <artifactId>spring-security-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
@@ -134,7 +135,7 @@
 					<password>jspart</password>
 				</configuration>
 				<executions>
-					<execution>
+					<!--<execution>
 						<phase>test-compile</phase>
 						<goals>
 							<goal>operation</goal>
@@ -144,7 +145,7 @@
 							<src>src/test/data/export.xml</src>
 						</configuration>
 					</execution>
-<!--					<execution>-->
+--><!--					<execution>-->
 <!--						<goals>-->
 <!--							<goal>export</goal>-->
 <!--						</goals>-->
@@ -158,7 +159,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>hibernate3-maven-plugin</artifactId>
-				<version>1.0-SNAPSHOT</version>
+				<version>2.2-SNAPSHOT</version>
 				<configuration>
 					<drop>true</drop>
 					<update>false</update>
@@ -197,7 +198,7 @@
 			<extension>
 				<groupId>postgresql</groupId>
 				<artifactId>postgresql</artifactId>
-				<version>8.2-504.jdbc3</version>
+				<version>8.3-603.jdbc3</version>
 			</extension>
 		</extensions>
 	</build>
