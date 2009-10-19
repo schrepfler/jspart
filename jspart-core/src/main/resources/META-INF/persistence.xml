@@ -1,28 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
-  <persistence-unit name="jspart" transaction-type="RESOURCE_LOCAL">
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+	<persistence-unit name="jspart" transaction-type="RESOURCE_LOCAL">
+		<!--
+			Needs this declaration if deploying to JBoss if no ds is deployed as
+			xml descriptor
+		-->
+		<!--
+			<non-jta-data-source>java:jdbc/jspart-localhost</non-jta-data-source>
+		-->
 
-    <class>net.sigmalab.jspart.model.ContactInfoType</class>
-    <class>net.sigmalab.jspart.model.Author</class>
-    <class>net.sigmalab.jspart.model.AuthorLocale</class>
-    <class>net.sigmalab.jspart.model.SoundArtifact</class>
-    <class>net.sigmalab.jspart.model.ImageArtifact</class>
-    <class>net.sigmalab.jspart.model.Comment</class>
-    <class>net.sigmalab.jspart.model.ArtifactType</class>
-    <class>net.sigmalab.jspart.model.Licence</class>
-    <class>net.sigmalab.jspart.model.ContactInfo</class>
-    <class>net.sigmalab.jspart.model.Artifact</class>
-    <class>net.sigmalab.jspart.model.Tag</class>
-    <class>net.sigmalab.jspart.model.Role</class>
-    <class>net.sigmalab.jspart.model.TagTranslation</class>
-	
-    <properties>
-        <property name="hibernate.connection.username">jspart</property>
-        <property name="hibernate.connection.password">jspart</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/jspart</property>   
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    </properties>
-    
-  </persistence-unit>
+		<!--
+			Need this declaration if deploying to JBoss and datasource is
+			deployed as xml descriptor
+		-->
+		<!--
+			<persistence-unit name="jspart" transaction-type="JTA">
+			<jta-data-source>java:jdbc/jspart-localhost</jta-data-source>
+		-->
+
+		<class>net.sigmalab.jspart.model.ContactInfoType</class>
+		<class>net.sigmalab.jspart.model.User</class>
+		<class>net.sigmalab.jspart.model.SoundArtifact</class>
+		<class>net.sigmalab.jspart.model.ImageArtifact</class>
+		<class>net.sigmalab.jspart.model.Comment</class>
+		<class>net.sigmalab.jspart.model.ArtifactType</class>
+		<class>net.sigmalab.jspart.model.Licence</class>
+		<class>net.sigmalab.jspart.model.ContactInfo</class>
+		<class>net.sigmalab.jspart.model.Artifact</class>
+		<class>net.sigmalab.jspart.model.Tag</class>
+		<class>net.sigmalab.jspart.model.Role</class>
+		<class>net.sigmalab.jspart.model.TagTranslation</class>
+		<class>net.sigmalab.jspart.model.Language</class>
+
+		<properties>
+			<property name="hibernate.connection.username" value="jspart" />
+			<property name="hibernate.connection.password" value="jspart" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/jspart" />
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
+		</properties>
+
+	</persistence-unit>
 </persistence>
