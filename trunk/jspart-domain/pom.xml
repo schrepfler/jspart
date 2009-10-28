@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>jspart</artifactId>
+		<groupId>net.sigmalab.jspart</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	
+	<repositories>
+        <repository>
+            <id>repo.synyx.repository</id>
+            <name>Synyx Maven2 Repository</name>
+            <url>http://repo.synyx.org</url>
+        </repository>
+    </repositories>
+	
+	<groupId>net.sigmalab.jspart</groupId>
+	<artifactId>jspart-domain</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>jspart-domain</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>5.8</version>
+			<scope>test</scope>
+			<classifier>jdk15</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.synyx.hades</groupId>
+			<artifactId>org.synyx.hades</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
