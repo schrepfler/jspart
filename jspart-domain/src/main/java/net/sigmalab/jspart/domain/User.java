@@ -29,38 +29,23 @@ import org.synyx.hades.domain.Persistable;
 public class User implements Persistable<Long> {
 
     /**
-	 * 
+	 * @uml.property  name="avatar"
+	 * @uml.associationEnd  
 	 */
-	private static final long serialVersionUID = 8750332347793923194L;
+    @OneToOne(cascade = CascadeType.ALL)
+    private ImageArtifact avatar;
 
 	/**
-	 * @uml.property  name="id"
+	 * @uml.property  name="birthDay"
 	 */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Temporal(value = TemporalType.DATE)
+    private Date birthDay;
 
     /**
-	 * @uml.property  name="username"
+	 * @uml.property  name="contactInfos"
 	 */
-    @Column(nullable = false, unique = true)
-    private String username;
-
-    /**
-	 * @uml.property  name="password"
-	 */
-    @Column(nullable = false)
-    private String password;
-
-    /**
-	 * @uml.property  name="name"
-	 */
-    private String name;
-
-    /**
-	 * @uml.property  name="surname"
-	 */
-    private String surname;
+    @OneToMany(cascade=CascadeType.ALL)
+    private Set<ContactInfo> contactInfos;
 
     /**
 	 * @uml.property  name="enabled"
@@ -69,10 +54,39 @@ public class User implements Persistable<Long> {
     private Boolean enabled = false;
 
     /**
-	 * @uml.property  name="birthDay"
+	 * @uml.property  name="id"
 	 */
-    @Temporal(value = TemporalType.DATE)
-    private Date birthDay;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    /**
+	 * @uml.property  name="languages"
+	 */
+ 	@OneToMany
+ 	private List<Language> languages;
+
+    /**
+	 * @uml.property  name="name"
+	 */
+    private String name;
+
+    /**
+	 * @uml.property  name="password"
+	 */
+    @Column(nullable = false)
+    private String password;
+
+    /**
+	 * @uml.property  name="roles"
+	 */
+    @ManyToMany(cascade = CascadeType.MERGE)
+    private Set<Role> roles = new HashSet<Role>();
+
+    /**
+	 * @uml.property  name="surname"
+	 */
+    private String surname;
 
     /**
 	 * @uml.property  name="timeZone"
@@ -80,41 +94,17 @@ public class User implements Persistable<Long> {
     private TimeZone timeZone;
 
     /**
-	 * @uml.property  name="streetName1"
+	 * @uml.property  name="username"
 	 */
-    private String streetName1;
+    @Column(nullable = false, unique = true)
+    private String username;
+    
+    private CivicAddress address;
 
     /**
-	 * @uml.property  name="streetName2"
+	 * 
 	 */
-    private String streetName2;
-
-    /**
-	 * @uml.property  name="city"
-	 */
-    private String city;
-
-    /**
-	 * @uml.property  name="postalCode"
-	 */
-    private String postalCode;
-
-    /**
-	 * @uml.property  name="state"
-	 */
-    private String state;
-
-    /**
-	 * @uml.property  name="country"
-	 */
-    private String country;
-
-    /**
-	 * @uml.property  name="avatar"
-	 * @uml.associationEnd  
-	 */
-    @OneToOne(cascade = CascadeType.ALL)
-    private ImageArtifact avatar;
+	private static final long serialVersionUID = 8750332347793923194L;
 
     /**
 	 * @return
@@ -125,276 +115,11 @@ public class User implements Persistable<Long> {
     }
 
     /**
-	 * @param  avatar
-	 * @uml.property  name="avatar"
-	 */
-    public void setAvatar(ImageArtifact avatar) {
-        this.avatar = avatar;
-    }
-
-    /**
 	 * @return
 	 * @uml.property  name="birthDay"
 	 */
     public Date getBirthDay() {
         return birthDay;
-    }
-
-    /**
-	 * @param  birthDay
-	 * @uml.property  name="birthDay"
-	 */
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="city"
-	 */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-	 * @param  city
-	 * @uml.property  name="city"
-	 */
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="country"
-	 */
-    public String getCountry() {
-        return country;
-    }
-
-    /**
-	 * @param  country
-	 * @uml.property  name="country"
-	 */
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="enabled"
-	 */
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    /**
-	 * @param  enabled
-	 * @uml.property  name="enabled"
-	 */
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="id"
-	 */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-	 * @param  id
-	 * @uml.property  name="id"
-	 */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="name"
-	 */
-    public String getName() {
-        return name;
-    }
-
-    /**
-	 * @param  name
-	 * @uml.property  name="name"
-	 */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="password"
-	 */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-	 * @param  password
-	 * @uml.property  name="password"
-	 */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="postalCode"
-	 */
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    /**
-	 * @param  postalCode
-	 * @uml.property  name="postalCode"
-	 */
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="state"
-	 */
-    public String getState() {
-        return state;
-    }
-
-    /**
-	 * @param  state
-	 * @uml.property  name="state"
-	 */
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="streetName1"
-	 */
-    public String getStreetName1() {
-        return streetName1;
-    }
-
-    /**
-	 * @param  streetName1
-	 * @uml.property  name="streetName1"
-	 */
-    public void setStreetName1(String streetName1) {
-        this.streetName1 = streetName1;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="streetName2"
-	 */
-    public String getStreetName2() {
-        return streetName2;
-    }
-
-    /**
-	 * @param  streetName2
-	 * @uml.property  name="streetName2"
-	 */
-    public void setStreetName2(String streetName2) {
-        this.streetName2 = streetName2;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="surname"
-	 */
-    public String getSurname() {
-        return surname;
-    }
-
-    /**
-	 * @param  surname
-	 * @uml.property  name="surname"
-	 */
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="timeZone"
-	 */
-    public TimeZone getTimeZone() {
-        return timeZone;
-    }
-
-    /**
-	 * @param  timeZone
-	 * @uml.property  name="timeZone"
-	 */
-    public void setTimeZone(TimeZone timeZone) {
-        this.timeZone = timeZone;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="username"
-	 */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-	 * @param  username
-	 * @uml.property  name="username"
-	 */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String toString() {
-		return "User [id=" + id + ", name=" + name + ", surname=" + surname
-				+ ", avatar=" + avatar + ", birthDay=" + birthDay + ", city="
-				+ city + ", contactInfos=" + contactInfos + ", country="
-				+ country + ", enabled=" + enabled + ", languages=" + languages
-				+ ", password=" + password + ", postalCode=" + postalCode
-				+ ", roles=" + roles + ", state=" + state + ", streetName1="
-				+ streetName1 + ", streetName2=" + streetName2 + ", timeZone="
-				+ timeZone + ", username=" + username + "]";
-	}
-
-	/**
-	 * @uml.property  name="contactInfos"
-	 */
-    @OneToMany(cascade=CascadeType.ALL)
-    private Set<ContactInfo> contactInfos;
-
-    /**
-	 * @uml.property  name="roles"
-	 */
-    @ManyToMany(cascade = CascadeType.MERGE)
-    private Set<Role> roles = new HashSet<Role>();
-
-    /**
-	 * Getter of the property <tt>roles</tt>
-	 * @return    Returns the role.
-	 * @uml.property  name="roles"
-	 */
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    /**
-	 * Setter of the property <tt>roles</tt>
-	 * @param roles    The role to set.
-	 * @uml.property  name="roles"
-	 */
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 
     /**
@@ -407,6 +132,99 @@ public class User implements Persistable<Long> {
     }
 
     /**
+	 * @return
+	 * @uml.property  name="enabled"
+	 */
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    /**
+	 * @return
+	 * @uml.property  name="id"
+	 */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+	 * @return
+	 * @uml.property  name="languages"
+	 */
+ 	public List<Language> getLanguages() {
+		return languages;
+	}
+
+    /**
+	 * @return
+	 * @uml.property  name="name"
+	 */
+    public String getName() {
+        return name;
+    }
+
+    /**
+	 * @return
+	 * @uml.property  name="password"
+	 */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+	 * Getter of the property <tt>roles</tt>
+	 * @return    Returns the role.
+	 * @uml.property  name="roles"
+	 */
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    /**
+	 * @return
+	 * @uml.property  name="surname"
+	 */
+    public String getSurname() {
+        return surname;
+    }
+
+    /**
+	 * @return
+	 * @uml.property  name="timeZone"
+	 */
+    public TimeZone getTimeZone() {
+        return timeZone;
+    }
+
+    /**
+	 * @return
+	 * @uml.property  name="username"
+	 */
+    public String getUsername() {
+        return username;
+    }
+
+    public boolean isNew() {
+ 		return null == getId();
+ 	}
+
+    /**
+	 * @param  avatar
+	 * @uml.property  name="avatar"
+	 */
+    public void setAvatar(ImageArtifact avatar) {
+        this.avatar = avatar;
+    }
+
+    /**
+	 * @param  birthDay
+	 * @uml.property  name="birthDay"
+	 */
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
+
+	/**
 	 * Setter of the property <tt>contactInfos</tt>
 	 * @param contactInfos    The contactInfo to set.
 	 * @uml.property  name="contactInfos"
@@ -415,30 +233,116 @@ public class User implements Persistable<Long> {
         this.contactInfos = contactInfos;
     }
 
- 	public boolean isNew() {
- 		return null == getId();
- 	}
- 	
- 	/**
-	 * @uml.property  name="languages"
+    /**
+	 * @param  enabled
+	 * @uml.property  name="enabled"
 	 */
- 	@OneToMany
- 	private List<Language> languages;
- 	
- 	/**
-	 * @return
-	 * @uml.property  name="languages"
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    /**
+	 * @param  id
+	 * @uml.property  name="id"
 	 */
- 	public List<Language> getLanguages() {
-		return languages;
-	}
- 	
- 	/**
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
 	 * @param languages
 	 * @uml.property  name="languages"
 	 */
  	public void setLanguages(List<Language> languages) {
 		this.languages = languages;
+	}
+
+    /**
+	 * @param  name
+	 * @uml.property  name="name"
+	 */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+	 * @param  password
+	 * @uml.property  name="password"
+	 */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+ 	/**
+	 * Setter of the property <tt>roles</tt>
+	 * @param roles    The role to set.
+	 * @uml.property  name="roles"
+	 */
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+ 	
+ 	/**
+	 * @param  surname
+	 * @uml.property  name="surname"
+	 */
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+ 	
+ 	/**
+	 * @param  timeZone
+	 * @uml.property  name="timeZone"
+	 */
+    public void setTimeZone(TimeZone timeZone) {
+        this.timeZone = timeZone;
+    }
+ 	
+ 	/**
+	 * @param  username
+	 * @uml.property  name="username"
+	 */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+	public CivicAddress getAddress() {
+		return address;
+	}
+
+	public void setAddress(CivicAddress address) {
+		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("User [avatar=");
+		builder.append(avatar);
+		builder.append(", birthDay=");
+		builder.append(birthDay);
+		builder.append(", contactInfos=");
+		builder.append(contactInfos);
+		builder.append(", enabled=");
+		builder.append(enabled);
+		builder.append(", id=");
+		builder.append(id);
+		builder.append(", languages=");
+		builder.append(languages);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", roles=");
+		builder.append(roles);
+		builder.append(", surname=");
+		builder.append(surname);
+		builder.append(", timeZone=");
+		builder.append(timeZone);
+		builder.append(", username=");
+		builder.append(username);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }
