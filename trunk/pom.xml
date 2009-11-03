@@ -11,7 +11,6 @@
 
 
 	<modules>
-		<module>jspart-core</module>
 		<module>jspart-struts2-ui</module>
 		<module>jspart-domain</module>
 		<module>jspart-dao</module>
@@ -22,6 +21,7 @@
 		<spring.version>2.5.6.SEC01</spring.version>
 		<struts.version>2.1.8.1</struts.version>
 		<postgresql.version>8.4-701.jdbc4</postgresql.version>
+		<testng.version>5.8</testng.version>
 	</properties>
 
 	<repositories>
@@ -31,27 +31,51 @@
 		</repository>
 	</repositories>
 
+	<!--
+		Default dependency information for projects that inherit from this
+		one. The dependencies in this section are not immediately resolved.
+		Instead, when a POM derived from this one declares a dependency
+		described by a matching groupId and artifactId, the version and other
+		values from this section are used for that dependency if they were not
+		already specified.
+	-->
 	<dependencyManagement>
 		<dependencies>
+
 			<dependency>
 				<groupId>net.sigmalab.jspart</groupId>
 				<artifactId>jspart-core</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>net.sigmalab.jspart</groupId>
 				<artifactId>jspart-struts2-ui</artifactId>
 				<version>1.0-SNAPSHOT</version>
 				<type>war</type>
 			</dependency>
-			
+
+			<!-- Persistence -->
+
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
 				<version>3.5.0.Beta-1</version>
 			</dependency>
 
+			<dependency>
+				<groupId>org.synyx.hades</groupId>
+				<artifactId>org.synyx.hades</artifactId>
+				<version>0.7.0</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>com.springsource.javax.persistence</artifactId>
+						<groupId>javax.persistence</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- Spring framework -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-orm</artifactId>
@@ -97,21 +121,8 @@
 				<artifactId>spring-web</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>postgresql</groupId>
-				<artifactId>postgresql</artifactId>
-				<version>${postgresql.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>2.2</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>1.4</version>
-			</dependency>
+
+			<!-- Struts -->
 			<dependency>
 				<groupId>org.apache.struts</groupId>
 				<artifactId>struts2-core</artifactId>
@@ -208,22 +219,35 @@
 				<version>1.6</version>
 			</dependency>
 
-			<dependency>
-				<groupId>org.synyx.hades</groupId>
-				<artifactId>org.synyx.hades</artifactId>
-				<version>0.7.0</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>com.springsource.javax.persistence</artifactId>
-						<groupId>javax.persistence</groupId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-
+			<!-- Logging -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-jdk14</artifactId>
 				<version>1.5.8</version>
+			</dependency>
+
+			<!-- DB Drivers -->
+			<dependency>
+				<groupId>postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${postgresql.version}</version>
+			</dependency>
+
+			<!-- Apache commons -->
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>1.2.2</version>
 			</dependency>
 
 		</dependencies>
