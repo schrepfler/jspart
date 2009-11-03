@@ -1,67 +1,74 @@
 package net.sigmalab.jspart.dao;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
 
-import java.util.GregorianCalendar;
+import java.util.Date;
 import java.util.TimeZone;
 
-import net.sigmalab.jspart.dao.IUserDAO;
-import net.sigmalab.jspart.domain.User;
+import net.sigmalab.jspart.domain.GeoLocationCivicAddress;
 import net.sigmalab.jspart.domain.Role;
+import net.sigmalab.jspart.domain.User;
 
-import org.springframework.test.AbstractTransactionalSpringContextTests;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
+import org.testng.annotations.Test;
 
-public abstract class AbstractAuthorDAOTest extends AbstractTransactionalSpringContextTests {
+public abstract class AbstractAuthorDAOTest extends AbstractTransactionalTestNGSpringContextTests {
 
-    private IUserDAO authorDao;
-    private IRoleDAO roleDAO;
+	@Autowired
+    private IUserDAO userDao;
 
+    @Test
 	public void testCRUD() {
-        Role role = new Role();
-        role.setDescription("Superuser role");
-        role.setName("ROLE_S");
-        assertNotNull(role);
-        int authorCount1 = authorDao.getAll().size();
-        User author = new User();
-        author.setBirthDay(GregorianCalendar.getInstance().getTime());
-        author.setCity("Tuzla");
-        author.setCountry("YU");
-        author.setEnabled(true);
-        author.setName("Srgjan");
-        author.setPassword("testpassword");
-        author.setPostalCode("123456");
-        author.setState("BiH");
-        author.setStreetName1("street 1");
-        author.setStreetName2("street 2");
-        author.setSurname("Srepfler");
-        author.setUsername("schrepfler2");
-        author.getRoles().add(role);
-        author.setTimeZone(TimeZone.getDefault());
+        Role role = new Role.Builder()
+        .description("Superuser")
+        .name("ROLE_S").build();
+        
+        
+        int userCountStart = userDao.getAll().size();
+        User user = new User.Builder()
+        .birthDay(new Date())
+        .address(new GeoLocationCivicAddress.Builder()
+        	.addressLine1("via Murri 75")
+        	.addressLine2("")
+        	.building("")
+        	.city("Bologna")
+        	.countryRegion("Italy")
+        	.floorLevel("2")
+        	.postalCode("40137")
+        	.stateProvince("BO")
+        	.latitude(20D)
+        	.longitude(20D)
+        	.altitude(200F)
+        	.horizontalAccuracy(1F)
+        	.verticalAccuracy(1F).build()
+        	)
+        .surname("Srepfler")
+        .name("Srgjan")
+        .username("username")
+        .password("password")
+        .timeZone(TimeZone.getDefault()).build();
+        
+        user.getRoles().add(role);
 
-        author = authorDao.save(author);
+        user = userDao.save(user);
 
-        System.out.println(author.getId());
-        assertNotNull(author.getId());
-        int authorCount2 = authorDao.getAll().size();
-        assertEquals(authorCount1 + 1, authorCount2);
+        System.out.println(user.getId());
+        assertNotNull(user.getId());
+        int userCountEnd = userDao.getAll().size();
+        assertEquals(userCountStart + 1, userCountEnd);
 
-        author = authorDao.get(author.getId());
-        assertNotNull(author);
+        user = userDao.get(user.getId());
+        assertNotNull(user);
 
-        author.setUsername("schrepfler");
-        author = authorDao.save(author);
+        user.setUsername("schrepfler");
+        user = userDao.save(user);
 
-        author = authorDao.get(author.getId());
-        assertEquals("schrepfler", author.getUsername());
+        user = userDao.get(user.getId());
+        assertEquals("schrepfler", user.getUsername());
 
-        authorDao.remove(author.getId());
-        assertEquals(authorCount1, authorCount2 - 1);
+        userDao.remove(user.getId());
+        assertEquals(userCountStart, userCountEnd - 1);
     }
-
-	public void setAuthorDao(IUserDAO authorDao) {
-		this.authorDao = authorDao;
-	}
-	
-    public void setRoleDAO(IRoleDAO roleDAO) {
-		this.roleDAO = roleDAO;
-	}
 
 }
