@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Entity(name = "Roles")
 public class Role implements java.io.Serializable {
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3102944980174473638L;
@@ -20,69 +20,103 @@ public class Role implements java.io.Serializable {
 	/**
 	 * @uml.property  name="id"
 	 */
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
 
-    /**
+	/**
 	 * @uml.property  name="name"
 	 */
-    @Column(unique = true, nullable = false)
-    private String name;
+	@Column(unique = true, nullable = false)
+	private String name;
 
-    /**
+	/**
 	 * @uml.property  name="description"
 	 */
-    private String description;
+	private String description;
 
-    /**
+	/**
 	 * @return
 	 * @uml.property  name="description"
 	 */
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    /**
+	/**
 	 * @param  description
 	 * @uml.property  name="description"
 	 */
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    /**
+	/**
 	 * @return
 	 * @uml.property  name="id"
 	 */
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    /**
+	/**
 	 * @param  id
 	 * @uml.property  name="id"
 	 */
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    /**
+	/**
 	 * @return
 	 * @uml.property  name="name"
 	 */
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    /**
+	/**
 	 * @param name
 	 * @return
 	 * @uml.property  name="name"
 	 */
-    public Role setName(String name) {
-        this.name = name;
-        return this;
-    }
+	public Role setName(String name) {
+		this.name = name;
+		return this;
+	}
 
+	public static class Builder {
+		private Long id;
+		private String name;
+		private String description;
+
+		public Builder id(Long id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder name(String name) {
+			this.name = name;
+			return this;
+		}
+
+		public Builder description(String description) {
+			this.description = description;
+			return this;
+		}
+
+		public Role build() {
+			return new Role(this);
+		}
+	}
+
+	private Role(Builder builder) {
+		this.id = builder.id;
+		this.name = builder.name;
+		this.description = builder.description;
+	}
+	
+	public Role(){
+	
+	}
 }
