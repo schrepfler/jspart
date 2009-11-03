@@ -2,11 +2,15 @@ package net.sigmalab.jspart.dao.jpa;
 
 import net.sigmalab.jspart.dao.AbstractAuthorDAOTest;
 
-public final class AuthorDAOTest extends AbstractAuthorDAOTest {
+import org.springframework.test.context.ContextConfiguration;
+import org.testng.annotations.Test;
+
+@ContextConfiguration(locations="classpath:applicationContext.xml")
+public class AuthorDAOTest extends AbstractAuthorDAOTest {
 	
-	@Override
-	protected String[] getConfigLocations() {
-		return new String[]{"classpath:applicationContext.xml"};
+	@Test
+	public AuthorDAOTest() {
+		super();
 	}
 
 }
