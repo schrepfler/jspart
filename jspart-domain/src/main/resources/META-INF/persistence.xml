@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+		<persistence-unit name="jspart-domain" transaction-type="RESOURCE_LOCAL">
+<!--		<non-jta-data-source>dataSourcePostgres</non-jta-data-source>-->
+		<class>net.sigmalab.jspart.domain.VideoArtifact</class>
+		<class>net.sigmalab.jspart.domain.User</class>
+		<class>net.sigmalab.jspart.domain.TextArtifact</class>
+		<class>net.sigmalab.jspart.domain.TagTranslation</class>
+		<class>net.sigmalab.jspart.domain.Tag</class>
+		<class>net.sigmalab.jspart.domain.SoundArtifact</class>
+		<class>net.sigmalab.jspart.domain.Role</class>
+		<class>net.sigmalab.jspart.domain.Licence</class>
+		<class>net.sigmalab.jspart.domain.Language</class>
+		<class>net.sigmalab.jspart.domain.ImageArtifact</class>
+		<class>net.sigmalab.jspart.domain.ContactInfoType</class>
+		<class>net.sigmalab.jspart.domain.ContactInfo</class>
+		<class>net.sigmalab.jspart.domain.Comment</class>
+		<class>net.sigmalab.jspart.domain.ArtifactType</class>
+		<class>net.sigmalab.jspart.domain.ArtifactCollection</class>
+		<class>net.sigmalab.jspart.domain.Artifact</class>
+		<class>net.sigmalab.jspart.domain.GeoLocationCivicAddress</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+			<property name="hibernate.connection.url" value="jdbc:postgresql:jspart"/>
+			<property name="hibernate.connection.username" value="jspart"/>
+			<property name="hibernate.connection.password" value="jspart"/>
+		</properties>
+	</persistence-unit>
+</persistence>
