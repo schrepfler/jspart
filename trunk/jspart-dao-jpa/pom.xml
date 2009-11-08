@@ -31,6 +31,10 @@
 			<artifactId>jspart-dao</artifactId>
 			<type>test-jar</type>
 		</dependency>
+			<dependency>
+				<groupId>postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+			</dependency>
 	</dependencies>
 	<build>
 		<plugins>
