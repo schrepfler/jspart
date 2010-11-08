@@ -45,50 +45,10 @@ public class Licence implements java.io.Serializable {
 
     /**
 	 * @return
-	 * @uml.property  name="name"
-	 */
-    public String getName() {
-        return name;
-    }
-
-    /**
-	 * @param  name
-	 * @uml.property  name="name"
-	 */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="url"
-	 */
-    public String getUrl() {
-        return url;
-    }
-
-    /**
-	 * @param  url
-	 * @uml.property  name="url"
-	 */
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    /**
-	 * @return
 	 * @uml.property  name="buttonImage"
 	 */
     public String getButtonImage() {
         return buttonImage;
-    }
-
-    /**
-	 * @param  buttonImage
-	 * @uml.property  name="buttonImage"
-	 */
-    public void setButtonImage(String buttonImage) {
-        this.buttonImage = buttonImage;
     }
 
     /**
@@ -100,14 +60,6 @@ public class Licence implements java.io.Serializable {
     }
 
     /**
-	 * @param  code
-	 * @uml.property  name="code"
-	 */
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    /**
 	 * @return
 	 * @uml.property  name="id"
 	 */
@@ -116,10 +68,58 @@ public class Licence implements java.io.Serializable {
     }
 
     /**
+	 * @return
+	 * @uml.property  name="name"
+	 */
+    public String getName() {
+        return name;
+    }
+
+    /**
+	 * @return
+	 * @uml.property  name="url"
+	 */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+	 * @param  buttonImage
+	 * @uml.property  name="buttonImage"
+	 */
+    public void setButtonImage(String buttonImage) {
+        this.buttonImage = buttonImage;
+    }
+
+    /**
+	 * @param  code
+	 * @uml.property  name="code"
+	 */
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    /**
 	 * @param  id
 	 * @uml.property  name="id"
 	 */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    /**
+	 * @param  name
+	 * @uml.property  name="name"
+	 */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+	 * @param  url
+	 * @uml.property  name="url"
+	 */
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

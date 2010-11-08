@@ -60,93 +60,36 @@ public class Comment implements Persistable<Long>, Auditable<User, Long> {
     private Boolean isDraft = true;
 
     /**
-	 * @return
-	 * @uml.property  name="inReplyToComment"
-	 */
-    public Comment getInReplyToComment() {
-		return inReplyToComment;
-	}
-
-    /**
-	 * @param  inReplyToComment
-	 * @uml.property  name="inReplyToComment"
-	 */
-    public void setInReplyToComment(Comment inReplyToComment) {
-		this.inReplyToComment = inReplyToComment;
-	}
-
-    /**
-	 * @return
-	 * @uml.property  name="text"
-	 */
-    public String getText() {
-		return text;
-	}
-
-    /**
-	 * @param text
-	 * @return
-	 * @uml.property  name="text"
-	 */
-    public Comment setText(String text) {
-		this.text = text;
-		return this;
-	}
-
-    /**
-	 * @return
-	 * @uml.property  name="id"
-	 */
-    public Long getId() {
-		return id;
-	}
-
-    /**
-	 * @param  id
-	 * @uml.property  name="id"
-	 */
-    public void setId(Long id) {
-		this.id = id;
-	}
-
-    /**
-	 * @return
-	 * @uml.property  name="isDraft"
-	 */
-    public Boolean getIsDraft() {
-		return isDraft;
-	}
-
-    /**
-	 * @param  isDraft
-	 * @uml.property  name="isDraft"
-	 */
-    public void setIsDraft(Boolean isDraft) {
-		this.isDraft = isDraft;
-	}
-
-    /**
-	 * @return
-	 * @uml.property  name="isEnabled"
-	 */
-    public Boolean getIsEnabled() {
-		return isEnabled;
-	}
-
-    /**
-	 * @param  isEnabled
-	 * @uml.property  name="isEnabled"
-	 */
-    public void setIsEnabled(Boolean isEnabled) {
-		this.isEnabled = isEnabled;
-	}
-
-    /**
 	 * @uml.property  name="artifact"
 	 * @uml.associationEnd  
 	 */
     @OneToOne(cascade=CascadeType.ALL)
     private Artifact artifact;
+
+    /**
+	 * @uml.property  name="createdDate"
+	 */
+	@Temporal(TemporalType.TIMESTAMP)
+   private Date createdDate;
+
+    /**
+	 * @uml.property  name="lastModifiedBy"
+	 * @uml.associationEnd  
+	 */
+	private User lastModifiedBy = null;
+
+    /**
+	 * @uml.property  name="lastModifiedDate"
+	 */
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastModifiedDate;
+
+    /**
+	 * @uml.property  name="createdBy"
+	 * @uml.associationEnd  
+	 */
+	@ManyToOne
+	private User createdBy = null;
 
     /**
 	 * Getter of the property <tt>artifact</tt>
@@ -158,39 +101,54 @@ public class Comment implements Persistable<Long>, Auditable<User, Long> {
 	}
 
     /**
-	 * Setter of the property <tt>artifact</tt>
-	 * @param artifact    The artifact to set.
-	 * @uml.property  name="artifact"
+	 * @return
+	 * @uml.property  name="createdBy"
 	 */
-    public void setArtifact(Artifact artifact) {
-		this.artifact = artifact;
+	public User getCreatedBy() {
+		return createdBy;
 	}
 
-	public boolean isNew() {
-		return null == getId();
-	}
-
-	/**
-	 * @uml.property  name="createdDate"
-	 */
-	@Temporal(TemporalType.TIMESTAMP)
-   private Date createdDate;
-
-	/**
+    /**
 	 * @return
 	 * @uml.property  name="createdDate"
 	 */
 	public DateTime getCreatedDate() {
 		return null == createdDate ? null : new DateTime(createdDate);
 	}
-	
-	/**
-	 * @uml.property  name="lastModifiedBy"
-	 * @uml.associationEnd  
-	 */
-	private User lastModifiedBy = null;
 
-	/**
+    /**
+	 * @return
+	 * @uml.property  name="id"
+	 */
+    public Long getId() {
+		return id;
+	}
+
+    /**
+	 * @return
+	 * @uml.property  name="inReplyToComment"
+	 */
+    public Comment getInReplyToComment() {
+		return inReplyToComment;
+	}
+
+    /**
+	 * @return
+	 * @uml.property  name="isDraft"
+	 */
+    public Boolean getIsDraft() {
+		return isDraft;
+	}
+
+    /**
+	 * @return
+	 * @uml.property  name="isEnabled"
+	 */
+    public Boolean getIsEnabled() {
+		return isEnabled;
+	}
+
+    /**
 	 * @return
 	 * @uml.property  name="lastModifiedBy"
 	 */
@@ -199,12 +157,6 @@ public class Comment implements Persistable<Long>, Auditable<User, Long> {
 	}
 
 	/**
-	 * @uml.property  name="lastModifiedDate"
-	 */
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastModifiedDate;
-	
-	/**
 	 * @return
 	 * @uml.property  name="lastModifiedDate"
 	 */
@@ -212,11 +164,72 @@ public class Comment implements Persistable<Long>, Auditable<User, Long> {
 		return null == lastModifiedDate ? null : new DateTime(lastModifiedDate);
 	}
 
-	public void setCreated(DateTime createdDateTime) {
+	/**
+	 * @return
+	 * @uml.property  name="text"
+	 */
+    public String getText() {
+		return text;
+	}
+
+	public boolean isNew() {
+		return null == getId();
+	}
+	
+	/**
+	 * Setter of the property <tt>artifact</tt>
+	 * @param artifact    The artifact to set.
+	 * @uml.property  name="artifact"
+	 */
+    public void setArtifact(Artifact artifact) {
+		this.artifact = artifact;
+	}
+
+	public void setCreatedDate(DateTime createdDateTime) {
 		this.createdDate = createdDateTime.toDate();
 	}
 
-	public void setLastModified(DateTime lastModifiedDateTime) {
+	/**
+	 * @param createdBy
+	 * @uml.property  name="createdBy"
+	 */
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
+	
+	/**
+	 * @param  id
+	 * @uml.property  name="id"
+	 */
+    public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param  inReplyToComment
+	 * @uml.property  name="inReplyToComment"
+	 */
+    public void setInReplyToComment(Comment inReplyToComment) {
+		this.inReplyToComment = inReplyToComment;
+	}
+
+	/**
+	 * @param  isDraft
+	 * @uml.property  name="isDraft"
+	 */
+    public void setIsDraft(Boolean isDraft) {
+		this.isDraft = isDraft;
+	}
+
+	/**
+	 * @param  isEnabled
+	 * @uml.property  name="isEnabled"
+	 */
+    public void setIsEnabled(Boolean isEnabled) {
+		this.isEnabled = isEnabled;
+	}
+	
+	public void setLastModifiedDate(DateTime lastModifiedDateTime) {
 		this.lastModifiedDate = lastModifiedDateTime.toDate();
 	}
 
@@ -227,28 +240,15 @@ public class Comment implements Persistable<Long>, Auditable<User, Long> {
 	public void setLastModifiedBy(User lastModifiedBy) {
 		this.lastModifiedBy = lastModifiedBy;
 	}
-	
-	/**
-	 * @uml.property  name="createdBy"
-	 * @uml.associationEnd  
-	 */
-	@ManyToOne
-	private User createdBy = null;
 
 	/**
+	 * @param text
 	 * @return
-	 * @uml.property  name="createdBy"
+	 * @uml.property  name="text"
 	 */
-	public User getCreatedBy() {
-		return createdBy;
-	}
-
-	/**
-	 * @param createdBy
-	 * @uml.property  name="createdBy"
-	 */
-	public void setCreatedBy(User createdBy) {
-		this.createdBy = createdBy;
+    public Comment setText(String text) {
+		this.text = text;
+		return this;
 	}
 
 }

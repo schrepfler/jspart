@@ -41,27 +41,11 @@ public class TagTranslation implements Serializable {
     private String translatedText;
 
     /**
-	 * @param  translatedText
-	 * @uml.property  name="translatedText"
-	 */
-    public void setTranslatedText(String translatedText) {
-        this.translatedText = translatedText;
-    }
-
-    /**
 	 * @return
-	 * @uml.property  name="translatedText"
+	 * @uml.property  name="id"
 	 */
-    public String getTranslatedText() {
-        return translatedText;
-    }
-
-    /**
-	 * @param  language
-	 * @uml.property  name="language"
-	 */
-    public void setLanguage(String language) {
-        this.language = language;
+    public Long getId() {
+        return id;
     }
 
     /**
@@ -73,6 +57,14 @@ public class TagTranslation implements Serializable {
     }
 
     /**
+	 * @return
+	 * @uml.property  name="translatedText"
+	 */
+    public String getTranslatedText() {
+        return translatedText;
+    }
+
+    /**
 	 * @param  id
 	 * @uml.property  name="id"
 	 */
@@ -81,11 +73,19 @@ public class TagTranslation implements Serializable {
     }
 
     /**
-	 * @return
-	 * @uml.property  name="id"
+	 * @param  language
+	 * @uml.property  name="language"
 	 */
-    public Long getId() {
-        return id;
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    /**
+	 * @param  translatedText
+	 * @uml.property  name="translatedText"
+	 */
+    public void setTranslatedText(String translatedText) {
+        this.translatedText = translatedText;
     }
 
 }

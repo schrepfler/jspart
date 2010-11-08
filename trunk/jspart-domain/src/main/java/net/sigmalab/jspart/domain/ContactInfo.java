@@ -40,18 +40,18 @@ public class ContactInfo implements Serializable {
 
     /**
 	 * @return
+	 * @uml.property  name="id"
+	 */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+	 * @return
 	 * @uml.property  name="type"
 	 */
     public ContactInfoType getType() {
         return type;
-    }
-
-    /**
-	 * @param  type
-	 * @uml.property  name="type"
-	 */
-    public void setType(ContactInfoType type) {
-        this.type = type;
     }
 
     /**
@@ -63,26 +63,26 @@ public class ContactInfo implements Serializable {
     }
 
     /**
-	 * @param  uri
-	 * @uml.property  name="uri"
-	 */
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="id"
-	 */
-    public Long getId() {
-        return id;
-    }
-
-    /**
 	 * @param  id
 	 * @uml.property  name="id"
 	 */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    /**
+	 * @param  type
+	 * @uml.property  name="type"
+	 */
+    public void setType(ContactInfoType type) {
+        this.type = type;
+    }
+
+    /**
+	 * @param  uri
+	 * @uml.property  name="uri"
+	 */
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 }

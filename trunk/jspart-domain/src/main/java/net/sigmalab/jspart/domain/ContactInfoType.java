@@ -32,26 +32,18 @@ public class ContactInfoType implements Serializable {
 
     /**
 	 * @return
-	 * @uml.property  name="name"
-	 */
-    public String getName() {
-        return name;
-    }
-
-    /**
-	 * @param  name
-	 * @uml.property  name="name"
-	 */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-	 * @return
 	 * @uml.property  name="id"
 	 */
     public Long getId() {
         return id;
+    }
+
+    /**
+	 * @return
+	 * @uml.property  name="name"
+	 */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -60,5 +52,13 @@ public class ContactInfoType implements Serializable {
 	 */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    /**
+	 * @param  name
+	 * @uml.property  name="name"
+	 */
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -25,12 +25,54 @@ public class ArtifactType implements Serializable{
     private Long id;
 
     /**
+	 * @uml.property  name="isPreviewable"
+	 */
+    private Boolean isPreviewable;
+
+    /**
+	 * @uml.property  name="mimeType"
+	 */
+    private String mimeType = "";
+
+    /**
+	 * @uml.property  name="mimeTypeHandler"
+	 */
+    private String mimeTypeHandler = "";
+
+    /**
 	 * Getter of the property <tt>id</tt>
 	 * @return    Returns the id.
 	 * @uml.property  name="id"
 	 */
     public Long getId() {
         return id;
+    }
+
+    /**
+	 * Getter of the property <tt>isPreviewable</tt>
+	 * @return    Returns the isPreviewable.
+	 * @uml.property  name="isPreviewable"
+	 */
+    public Boolean getIsPreviewable() {
+        return isPreviewable;
+    }
+
+    /**
+	 * Getter of the property <tt>mimeType</tt>
+	 * @return    Returns the mimeType.
+	 * @uml.property  name="mimeType"
+	 */
+    public String getMimeType() {
+        return mimeType;
+    }
+
+    /**
+	 * Getter of the property <tt>mimeTypeHandler</tt>
+	 * @return    Returns the mimeTypeHandler.
+	 * @uml.property  name="mimeTypeHandler"
+	 */
+    public String getMimeTypeHandler() {
+        return mimeTypeHandler;
     }
 
     /**
@@ -43,20 +85,6 @@ public class ArtifactType implements Serializable{
     }
 
     /**
-	 * @uml.property  name="isPreviewable"
-	 */
-    private Boolean isPreviewable;
-
-    /**
-	 * Getter of the property <tt>isPreviewable</tt>
-	 * @return    Returns the isPreviewable.
-	 * @uml.property  name="isPreviewable"
-	 */
-    public Boolean getIsPreviewable() {
-        return isPreviewable;
-    }
-
-    /**
 	 * Setter of the property <tt>isPreviewable</tt>
 	 * @param isPreviewable    The isPreviewable to set.
 	 * @uml.property  name="isPreviewable"
@@ -66,40 +94,12 @@ public class ArtifactType implements Serializable{
     }
 
     /**
-	 * @uml.property  name="mimeType"
-	 */
-    private String mimeType = "";
-
-    /**
-	 * Getter of the property <tt>mimeType</tt>
-	 * @return    Returns the mimeType.
-	 * @uml.property  name="mimeType"
-	 */
-    public String getMimeType() {
-        return mimeType;
-    }
-
-    /**
 	 * Setter of the property <tt>mimeType</tt>
 	 * @param mimeType    The mimeType to set.
 	 * @uml.property  name="mimeType"
 	 */
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
-    }
-
-    /**
-	 * @uml.property  name="mimeTypeHandler"
-	 */
-    private String mimeTypeHandler = "";
-
-    /**
-	 * Getter of the property <tt>mimeTypeHandler</tt>
-	 * @return    Returns the mimeTypeHandler.
-	 * @uml.property  name="mimeTypeHandler"
-	 */
-    public String getMimeTypeHandler() {
-        return mimeTypeHandler;
     }
 
     /**

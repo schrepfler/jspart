@@ -27,10 +27,26 @@ public class Language {
 	
 	/**
 	 * @return
+	 * @uml.property  name="id"
+	 */
+	public Long getId() {
+		return id;
+	}
+	
+	/**
+	 * @return
 	 * @uml.property  name="locale"
 	 */
 	public Locale getLocale() {
 		return locale;
+	}
+	
+	/**
+	 * @param id
+	 * @uml.property  name="id"
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	/**
@@ -40,21 +56,10 @@ public class Language {
 	public void setLocale(Locale locale) {
 		this.locale = locale;
 	}
-	
-	/**
-	 * @return
-	 * @uml.property  name="id"
-	 */
-	public Long getId() {
-		return id;
-	}
-	
-	/**
-	 * @param id
-	 * @uml.property  name="id"
-	 */
-	public void setId(Long id) {
-		this.id = id;
+
+	@Override
+	public String toString() {
+		return "Language [locale=" + locale + "]";
 	}
 
 }
