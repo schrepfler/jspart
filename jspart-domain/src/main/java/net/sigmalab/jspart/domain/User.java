@@ -9,19 +9,23 @@ import java.util.TimeZone;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.synyx.hades.domain.Persistable;
-import javax.persistence.Embedded;
 
 /**
  * @uml.dependency  supplier="net.sigmalab.jspart.model.ImageArtifact"
@@ -30,11 +34,97 @@ import javax.persistence.Embedded;
 @Table(name = "Users")
 public class User implements Persistable<Long> {
 
+	public static class Builder {
+		private ImageArtifact avatar;
+		private Date birthDay;
+		private Set<ContactInfo> contactInfos = new HashSet<ContactInfo>();
+		private Boolean enabled = true;
+		private Long id;
+		private List<Language> languages = new ArrayList<Language>();
+		private String name;
+		private String password;
+		private Set<Role> roles = new HashSet<Role>();
+		private String surname;
+		private TimeZone timeZone;
+		private String username;
+		private GeoLocationCivicAddress address;
+
+		public Builder address(GeoLocationCivicAddress address) {
+			this.address = address;
+			return this;
+		}
+
+		public Builder avatar(ImageArtifact avatar) {
+			this.avatar = avatar;
+			return this;
+		}
+
+		public Builder birthDay(Date birthDay) {
+			this.birthDay = birthDay;
+			return this;
+		}
+
+		public User build() {
+			return new User(this);
+		}
+
+		public Builder contactInfos(Set<ContactInfo> contactInfos) {
+			this.contactInfos = contactInfos;
+			return this;
+		}
+
+		public Builder enabled(Boolean enabled) {
+			this.enabled = enabled;
+			return this;
+		}
+
+		public Builder id(Long id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder languages(List<Language> languages) {
+			this.languages = languages;
+			return this;
+		}
+
+		public Builder name(String name) {
+			this.name = name;
+			return this;
+		}
+
+		public Builder password(String password) {
+			this.password = password;
+			return this;
+		}
+
+		public Builder roles(Set<Role> roles) {
+			this.roles = roles;
+			return this;
+		}
+
+		public Builder surname(String surname) {
+			this.surname = surname;
+			return this;
+		}
+
+		public Builder timeZone(TimeZone timeZone) {
+			this.timeZone = timeZone;
+			return this;
+		}
+
+		public Builder username(String username) {
+			this.username = username;
+			return this;
+		}
+	}
+
 	/**
 	 * @uml.property  name="avatar"
 	 * @uml.associationEnd  
 	 */
 	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
 	private ImageArtifact avatar;
 
 	/**
@@ -65,7 +155,8 @@ public class User implements Persistable<Long> {
 	/**
 	 * @uml.property  name="languages"
 	 */
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
+	@Size(min = 1)
 	private List<Language> languages = new ArrayList<Language>();
 
 	/**
@@ -78,12 +169,17 @@ public class User implements Persistable<Long> {
 	 */
 	@Column(nullable = false)
 	private String password;
-
+	
 	/**
 	 * @uml.property  name="roles"
 	 */
 	@ManyToMany(cascade = CascadeType.MERGE)
+	@Size(min = 1)
+	@JoinTable(joinColumns={@JoinColumn(name="USER_ID")},inverseJoinColumns = {@JoinColumn(name="ROLE_ID")})
 	private Set<Role> roles = new HashSet<Role>();
+
+//	@OneToMany(mappedBy = "user")
+//	private Set<UserRole> userRoles;
 
 	/**
 	 * @uml.property  name="surname"
@@ -99,8 +195,13 @@ public class User implements Persistable<Long> {
 	 * @uml.property  name="username"
 	 */
 	@Column(nullable = false, unique = true)
+	@Size(max=25)
 	private String username;
 
+	/**
+	 * 
+	 * @uml.property  name="address"
+	 */
 	@Embedded
 	private GeoLocationCivicAddress address;
 
@@ -108,6 +209,34 @@ public class User implements Persistable<Long> {
 	 * 
 	 */
 	private static final long serialVersionUID = 8750332347793923194L;
+
+	public User(){
+		
+	}
+
+	private User(Builder builder) {
+		this.avatar = builder.avatar;
+		this.birthDay = builder.birthDay;
+		this.contactInfos = builder.contactInfos;
+		this.enabled = builder.enabled;
+		this.id = builder.id;
+		this.languages = builder.languages;
+		this.name = builder.name;
+		this.password = builder.password;
+		this.roles = builder.roles;
+		this.surname = builder.surname;
+		this.timeZone = builder.timeZone;
+		this.username = builder.username;
+		this.address = builder.address;
+	}
+
+	/**
+	 * 
+	 * @uml.property  name="address"
+	 */
+	public GeoLocationCivicAddress getAddress() {
+		return address;
+	}
 
 	/**
 	 * @return
@@ -207,8 +336,20 @@ public class User implements Persistable<Long> {
 		return username;
 	}
 
+//	public Set<UserRole> getUserRoles() {
+//		return userRoles;
+//	}
+
 	public boolean isNew() {
 		return null == getId();
+	}
+
+	/**
+	 * 
+	 * @uml.property  name="address"
+	 */
+	public void setAddress(GeoLocationCivicAddress address) {
+		this.address = address;
 	}
 
 	/**
@@ -259,7 +400,7 @@ public class User implements Persistable<Long> {
 	public void setLanguages(List<Language> languages) {
 		this.languages = languages;
 	}
-
+	
 	/**
 	 * @param  name
 	 * @uml.property  name="name"
@@ -267,7 +408,7 @@ public class User implements Persistable<Long> {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	/**
 	 * @param  password
 	 * @uml.property  name="password"
@@ -300,7 +441,7 @@ public class User implements Persistable<Long> {
 	public void setTimeZone(TimeZone timeZone) {
 		this.timeZone = timeZone;
 	}
-
+	
 	/**
 	 * @param  username
 	 * @uml.property  name="username"
@@ -308,14 +449,10 @@ public class User implements Persistable<Long> {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-	public GeoLocationCivicAddress getAddress() {
-		return address;
-	}
-
-	public void setAddress(GeoLocationCivicAddress address) {
-		this.address = address;
-	}
+	
+//	public void setUserRoles(Set<UserRole> userRoles) {
+//		this.userRoles = userRoles;
+//	}
 
 	@Override
 	public String toString() {
@@ -346,110 +483,5 @@ public class User implements Persistable<Long> {
 		builder.append(username);
 		builder.append("]");
 		return builder.toString();
-	}
-
-	public static class Builder {
-		private ImageArtifact avatar;
-		private Date birthDay;
-		private Set<ContactInfo> contactInfos = new HashSet<ContactInfo>();
-		private Boolean enabled = true;
-		private Long id;
-		private List<Language> languages = new ArrayList<Language>();
-		private String name;
-		private String password;
-		private Set<Role> roles = new HashSet<Role>();
-		private String surname;
-		private TimeZone timeZone;
-		private String username;
-		private GeoLocationCivicAddress address;
-
-		public Builder avatar(ImageArtifact avatar) {
-			this.avatar = avatar;
-			return this;
-		}
-
-		public Builder birthDay(Date birthDay) {
-			this.birthDay = birthDay;
-			return this;
-		}
-
-		public Builder contactInfos(Set<ContactInfo> contactInfos) {
-			this.contactInfos = contactInfos;
-			return this;
-		}
-
-		public Builder enabled(Boolean enabled) {
-			this.enabled = enabled;
-			return this;
-		}
-
-		public Builder id(Long id) {
-			this.id = id;
-			return this;
-		}
-
-		public Builder languages(List<Language> languages) {
-			this.languages = languages;
-			return this;
-		}
-
-		public Builder name(String name) {
-			this.name = name;
-			return this;
-		}
-
-		public Builder password(String password) {
-			this.password = password;
-			return this;
-		}
-
-		public Builder roles(Set<Role> roles) {
-			this.roles = roles;
-			return this;
-		}
-
-		public Builder surname(String surname) {
-			this.surname = surname;
-			return this;
-		}
-
-		public Builder timeZone(TimeZone timeZone) {
-			this.timeZone = timeZone;
-			return this;
-		}
-
-		public Builder username(String username) {
-			this.username = username;
-			return this;
-		}
-
-		public Builder address(GeoLocationCivicAddress address) {
-			this.address = address;
-			return this;
-		}
-
-		public User build() {
-			return new User(this);
-		}
-	}
-	
-	public User(){
-		
-	}
-
-	private User(Builder builder) {
-		this.avatar = builder.avatar;
-		this.birthDay = builder.birthDay;
-		this.contactInfos = builder.contactInfos;
-		this.enabled = builder.enabled;
-		this.id = builder.id;
-		this.languages = builder.languages;
-		this.name = builder.name;
-		this.password = builder.password;
-		this.roles = builder.roles;
-		this.surname = builder.surname;
-		this.timeZone = builder.timeZone;
-		this.username = builder.username;
-		this.address = builder.address;
 	}
 }

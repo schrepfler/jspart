@@ -1,5 +1,6 @@
 package net.sigmalab.jspart.domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,7 +15,7 @@ import javax.persistence.Transient;
  * @author    schrepfler
  */
 @Entity
-public class Tag implements java.io.Serializable {
+public class Tag implements Serializable {
 
     /**
 	 * 
@@ -51,83 +52,108 @@ public class Tag implements java.io.Serializable {
     private Set<TagTranslation> tagTranslations;
 
     /**
-	 * @param  tagTranslations
-	 * @uml.property  name="tagTranslations"
+	 * @uml.property  name="artifact"
+	 * @uml.associationEnd  inverse="tag:net.sigmalab.jspart.domain.Artifact"
+	 * @uml.association  name="tags"
 	 */
-    public void setTagTranslations(Set<TagTranslation> tagTranslations) {
-        this.tagTranslations = tagTranslations;
-    }
+	private Artifact artifact;
 
     /**
-	 * @return
-	 * @uml.property  name="tagTranslations"
+	 * Getter of the property <tt>artifact</tt>
+	 * @return  Returns the artifact.
+	 * @uml.property  name="artifact"
 	 */
-    public Set<TagTranslation> getTagTranslations() {
-        return tagTranslations;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="tagCount"
-	 */
-    public Long getTagCount() {
-        return tagCount;
-    }
-
-    /**
-	 * @param  tagCount
-	 * @uml.property  name="tagCount"
-	 */
-    public void setTagCount(Long tagCount) {
-        this.tagCount = tagCount;
-    }
+	public Artifact getArtifact() {
+		return artifact;
+	}
 
     /**
 	 * @return
 	 * @uml.property  name="id"
 	 */
     public Long getId() {
-        return id;
-    }
-
-    /**
-	 * @param  id
-	 * @uml.property  name="id"
-	 */
-    public void setId(Long id) {
-        this.id = id;
-    }
+		return id;
+	}
 
     /**
 	 * @return
 	 * @uml.property  name="name"
 	 */
     public String getName() {
-        return name;
-    }
+		return name;
+	}
 
     /**
-	 * @param  name
-	 * @uml.property  name="name"
+	 * @return
+	 * @uml.property  name="tagCount"
 	 */
-    public void setName(String name) {
-        this.name = name;
-    }
+    public Long getTagCount() {
+		return tagCount;
+	}
+
+    /**
+	 * @return
+	 * @uml.property  name="tagTranslations"
+	 */
+    public Set<TagTranslation> getTagTranslations() {
+		return tagTranslations;
+	}
 
     /**
 	 * @return
 	 * @uml.property  name="type"
 	 */
     public String getType() {
-        return type;
-    }
+		return type;
+	}
 
     /**
+	 * Setter of the property <tt>artifact</tt>
+	 * @param artifact  The artifact to set.
+	 * @uml.property  name="artifact"
+	 */
+	public void setArtifact(Artifact artifact) {
+		this.artifact = artifact;
+	}
+
+    /**
+	 * @param  id
+	 * @uml.property  name="id"
+	 */
+    public void setId(Long id) {
+		this.id = id;
+	}
+
+    /**
+	 * @param  name
+	 * @uml.property  name="name"
+	 */
+    public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @param  tagCount
+	 * @uml.property  name="tagCount"
+	 */
+    public void setTagCount(Long tagCount) {
+		this.tagCount = tagCount;
+	}
+
+	/**
+	 * @param  tagTranslations
+	 * @uml.property  name="tagTranslations"
+	 */
+    public void setTagTranslations(Set<TagTranslation> tagTranslations) {
+		this.tagTranslations = tagTranslations;
+	}
+
+	/**
 	 * @param  type
 	 * @uml.property  name="type"
 	 */
     public void setType(String type) {
-        this.type = type;
-    }
+		this.type = type;
+	}
 
 }

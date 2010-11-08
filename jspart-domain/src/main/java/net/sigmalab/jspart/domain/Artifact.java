@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import org.joda.time.DateTime;
 import org.synyx.hades.domain.auditing.Auditable;
 
@@ -84,146 +86,28 @@ public abstract class Artifact implements Serializable, Auditable<User, Long> {
 	 * @uml.property  name="isDraft"
 	 */
     private Boolean isDraft = false;
-
-    /**
-	 * @uml.property  name="length"
-	 */
-    private long length;
     
-    /**
-	 * @uml.property  name="tags"
-	 */
-    @OneToMany(cascade=CascadeType.ALL)
-    private Set<Tag> tags;
+//    /**
+//	 * @uml.property  name="tags"
+//	 */
+//    @OneToMany(cascade = CascadeType.ALL)
+//	private Set<Tag> tags;
 
-    /**
-	 * @return
-	 * @uml.property  name="tags"
-	 */
-    public Set<Tag> getTags() {
-        return tags;
-    }
-
-    /**
-	 * @param  tags
-	 * @uml.property  name="tags"
-	 */
-    public void setTags(Set<Tag> tags) {
-        this.tags = tags;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="length"
-	 */
-    public long getLength() {
-        return length;
-    }
-
-    /**
-	 * @param  length
-	 * @uml.property  name="length"
-	 */
-    public void setLength(long length) {
-        this.length = length;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="contributer"
-	 */
-    public User getContributer() {
-        return contributer;
-    }
-
-    /**
-	 * @param  contributer
-	 * @uml.property  name="contributer"
-	 */
-    public void setContributer(User contributer) {
-        this.contributer = contributer;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="description"
-	 */
-    public Comment getDescription() {
-        return description;
-    }
-
-    /**
-	 * @param  description
-	 * @uml.property  name="description"
-	 */
-    public void setDescription(Comment description) {
-        this.description = description;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="enabledComments"
-	 */
-    public Boolean getEnabledComments() {
-        return enabledComments;
-    }
-
-    /**
-	 * @param  enabledComments
-	 * @uml.property  name="enabledComments"
-	 */
-    public void setEnabledComments(Boolean enabledComments) {
-        this.enabledComments = enabledComments;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="id"
-	 */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-	 * @param  id
-	 * @uml.property  name="id"
-	 */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="isDraft"
-	 */
-    public Boolean getIsDraft() {
-        return isDraft;
-    }
-
-    /**
-	 * @param  isDraft
-	 * @uml.property  name="isDraft"
-	 */
-    public void setIsDraft(Boolean isDraft) {
-        this.isDraft = isDraft;
-    }
-
-    /**
-	 * @return
-	 * @uml.property  name="name"
-	 */
-    public String getName() {
-        return name;
-    }
-
-    /**
-	 * @param  name
-	 * @uml.property  name="name"
-	 */
-    public void setName(String name) {
-        this.name = name;
-    }
-
+//    /** 
+//	 * @return
+//	 * @uml.property  name="tags"
+//	 */
+//    public Set<Tag> getTags() {
+//		return tags;
+//	}
+//
+//    /** 
+//	 * @param tags
+//	 * @uml.property  name="tags"
+//	 */
+//    public void setTags(Set<Tag> tags) {
+//		this.tags = tags;
+//	}
 
     /**
 	 * @uml.property  name="uri"
@@ -231,74 +115,44 @@ public abstract class Artifact implements Serializable, Auditable<User, Long> {
     private String uri = "";
 
     /**
-	 * Getter of the property <tt>uri</tt>
-	 * @return   Returns the uri.
-	 * @uml.property  name="uri"
-	 */
-    public String getUri() {
-        return uri;
-    }
-
-    /**
-	 * Setter of the property <tt>uri</tt>
-	 * @param uri   The uri to set.
-	 * @uml.property  name="uri"
-	 */
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
-
-    /**
-	 * @uml.property  name="artifactType"
-	 * @uml.associationEnd  
-	 */
-    @ManyToOne
-    private ArtifactType artifactType;
-
-    /**
-	 * @return
-	 * @uml.property  name="artifactType"
-	 */
-    public ArtifactType getArtifactType() {
-        return artifactType;
-    }
-
-    /**
-	 * @param  artifactType
-	 * @uml.property  name="artifactType"
-	 */
-    public void setArtifactType(ArtifactType artifactType) {
-        this.artifactType = artifactType;
-    }
-
-    /**
 	 * @uml.property  name="comments"
 	 */
     @OneToMany(cascade=CascadeType.ALL)
     private Set<Comment> comments = new HashSet<Comment>();
 
+    /**
+	 * @uml.property  name="tags"
+	 * @uml.associationEnd  multiplicity="(0 -1)" aggregation="composite" inverse="artifact:net.sigmalab.jspart.domain.Tag"
+	 * @uml.association  name="tags"
+	 */
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<Tag> tags;
 
     /**
 	 * @return
 	 * @uml.property  name="comments"
 	 */
     public Set<Comment> getComments() {
-        return comments;
-    }
+		return comments;
+	}
 
     /**
-	 * @param  comments
-	 * @uml.property  name="comments"
+	 * @return
+	 * @uml.property  name="contributer"
 	 */
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
-    }
+    public User getContributer() {
+		return contributer;
+	}
 
+    /**
+	 * 
+	 * @uml.property  name="createdBy"
+	 */
 	public User getCreatedBy() {
 		return contributer;
 	}
 
-	/**
+    /**
 	 * @return
 	 * @uml.property  name="createdDate"
 	 */
@@ -306,11 +160,48 @@ public abstract class Artifact implements Serializable, Auditable<User, Long> {
 		return null == createdDate ? null : new DateTime(createdDate);
 	}
 
+    /**
+	 * @return
+	 * @uml.property  name="description"
+	 */
+    public Comment getDescription() {
+		return description;
+	}
+
+    /**
+	 * @return
+	 * @uml.property  name="enabledComments"
+	 */
+    public Boolean getEnabledComments() {
+		return enabledComments;
+	}
+
+    /**
+	 * @return
+	 * @uml.property  name="id"
+	 */
+    public Long getId() {
+		return id;
+	}
+
+    /**
+	 * @return
+	 * @uml.property  name="isDraft"
+	 */
+    public Boolean getIsDraft() {
+		return isDraft;
+	}
+
+    /**
+	 * @return
+	 * @uml.property  name="lastModifiedBy"
+	 */
 	public User getLastModifiedBy() {
 		return editor;
 	}
 
-	/**
+
+    /**
 	 * @return
 	 * @uml.property  name="lastModifiedDate"
 	 */
@@ -318,36 +209,147 @@ public abstract class Artifact implements Serializable, Auditable<User, Long> {
 		return null == lastModifiedDate ? null : new DateTime(lastModifiedDate);
 	}
 
-	public void setCreated(DateTime creationDate) {
-		this.createdDate = creationDate.toDate();
+    /**
+	 * @return
+	 * @uml.property  name="name"
+	 */
+    public String getName() {
+		return name;
 	}
 
+    /**
+	 * Getter of the property <tt>tag</tt>
+	 * @return  Returns the tag.
+	 * @uml.property  name="tags"
+	 */
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+
+    /**
+	 * Getter of the property <tt>uri</tt>
+	 * @return   Returns the uri.
+	 * @uml.property  name="uri"
+	 */
+    public String getUri() {
+		return uri;
+	}
+
+
+    public boolean isNew() {
+		return null == getId();
+	}
+
+    /**
+	 * @param  comments
+	 * @uml.property  name="comments"
+	 */
+    public void setComments(Set<Comment> comments) {
+		this.comments = comments;
+	}
+
+    /**
+	 * @param  contributer
+	 * @uml.property  name="contributer"
+	 */
+    public void setContributer(User contributer) {
+		this.contributer = contributer;
+	}
+
+	public void setCreatedDate(DateTime creationDate) {
+		this.createdDate = creationDate.toDate();
+	}
+	/**
+	 * 
+	 * @uml.property  name="createdBy"
+	 */
 	public void setCreatedBy(User createdBy) {
 		this.contributer = createdBy;
 	}
 
-	public void setLastModified(DateTime lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate.toDate();
-		
+	/**
+	 * @param  description
+	 * @uml.property  name="description"
+	 */
+    public void setDescription(Comment description) {
+		this.description = description;
 	}
 
+	/**
+	 * @param  enabledComments
+	 * @uml.property  name="enabledComments"
+	 */
+    public void setEnabledComments(Boolean enabledComments) {
+		this.enabledComments = enabledComments;
+	}
+	
+	/**
+	 * @param  id
+	 * @uml.property  name="id"
+	 */
+    public void setId(Long id) {
+		this.id = id;
+	}
+	/**
+	 * @param  isDraft
+	 * @uml.property  name="isDraft"
+	 */
+    public void setIsDraft(Boolean isDraft) {
+		this.isDraft = isDraft;
+	}
+	/**
+	 * 
+	 * @uml.property  name="lastModifiedDate"
+	 */
+	public void setLastModifiedDate(DateTime lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate.toDate();
+	
+	}
+
+	/**
+	 * 
+	 * @uml.property  name="lastModifiedBy"
+	 */
 	public void setLastModifiedBy(User lastModifiedBy) {
 		this.editor = lastModifiedBy;
-		
+	
 	}
 
-	public boolean isNew() {
-		return null == getId();
+	/**
+	 * @param  name
+	 * @uml.property  name="name"
+	 */
+    public void setName(String name) {
+		this.name = name;
+	}
+
+
+	/**
+	 * Setter of the property <tt>tag</tt>
+	 * @param tag  The tag to set.
+	 * @uml.property  name="tags"
+	 */
+	public void setTag(Set<Tag> tags) {
+		this.tags = tags;
+	}
+
+	/**
+	 * Setter of the property <tt>uri</tt>
+	 * @param uri   The uri to set.
+	 * @uml.property  name="uri"
+	 */
+    public void setUri(String uri) {
+		this.uri = uri;
 	}
 
 	public String toString() {
-		return "Artifact [id=" + id + ", artifactType=" + artifactType
-				+ ", comments=" + comments + ", contributer=" + contributer
+		return "Artifact [id=" + id + ", comments=" + comments + ", contributer=" + contributer
 				+ ", createdDate=" + createdDate + ", description="
 				+ description + ", editor=" + editor + ", enabledComments="
 				+ enabledComments + ", isDraft=" + isDraft
 				+ ", lastModifiedDate=" + lastModifiedDate + ", length="
-				+ length + ", name=" + name + ", tags=" + tags + ", uri=" + uri
+				+ ", name=" + name + ", tags=" + tags + ", uri=" + uri
 				+ "]";
 	}
 
